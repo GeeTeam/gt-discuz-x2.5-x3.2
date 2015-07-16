@@ -43,6 +43,7 @@ class geetestlib{
 			"gt" => $captchaid,
 			"product" => $product,
 			"sdk" => GT_SDK_VERSION,
+			"rand" => rand(),
 		);
 		if ($product == "popup") {
 			$params["popupbtnid"] = $popupbtnid;
