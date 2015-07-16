@@ -14,7 +14,7 @@
  */
 
 define('GT_API_SERVER', 'http://api.geetest.com');
-define('GT_SDK_VERSION', 'php_2.0');
+define('GT_SDK_VERSION', 'discuz_1.0');
 
 class geetestlib{
 	private $config = array();
@@ -41,7 +41,6 @@ class geetestlib{
 	function get_widget($captchaid,$product, $popupbtnid="") {
 		$params = array(
 			"gt" => $captchaid,
-			"challenge" => $this->challenge,
 			"product" => $product,
 			"sdk" => GT_SDK_VERSION,
 		);

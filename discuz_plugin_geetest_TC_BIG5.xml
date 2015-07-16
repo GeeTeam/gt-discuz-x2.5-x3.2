@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.1.6]]></item>
+			<item id="version"><![CDATA[7.1.7]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -380,8 +380,8 @@
 				<item id="geetest_key"><![CDATA[私鑰]]></item>
 				<item id="id_note"><![CDATA[極驗驗證是基於SAAS的雲應用，此公鑰為本站驗證對應的唯一標識]]></item>
 				<item id="key_note"><![CDATA[對應其相應公鑰，類似於密碼，請勿洩露]]></item>
-				<item id="web_button_note"><![CDATA[注意：web端的ID和KEY僅可用於web端的驗證！]]></item>
-				<item id="mobile_button_note"><![CDATA[注意：移動端的ID和KEY僅可用於移動端的驗證！]]></item>
+				<item id="web_button_note"><![CDATA[註意：新生成的ID和KEY我們服務器會做壹些初始化工作，建議10分鐘後再開啟驗證！]]></item>
+				<item id="mobile_button_note"><![CDATA[註意：移動端的ID和KEY僅可用於移動端的驗證！]]></item>
 				
 				
 				<item id="relevance_geetest_account"><![CDATA[關聯極驗賬號]]></item>
@@ -408,7 +408,7 @@
 				<p>(3).優化的手機版大大提高了對手機模板的兼容性，如果模板開發者完全按照模板的規則開發，插件是兼容的，若遇不兼容，建議替換成discuz原生模板。</p>
 				<p>(4).手機版極驗驗證針對移動端特點極大的改善了用戶體驗，使用更加便捷、炫酷、保障網站安全，建議站長們及時開啟。</p>]]></item>
 				<item id="update"><![CDATA[更新說明]]></item>
-				<item id="update_node"><![CDATA[1、刪除垃圾帖子過濾功能，並將會在7月10日左右發布極驗驗證碼智能過濾版（即極驗驗證+帖子過濾，在插件後臺搜索極驗驗證碼智能過濾版下載即可，本插件還是僅保持驗證功能）]]></item>
+				<item id="update_node"><![CDATA[1、去掉register模式的限制]]></item>
 				
 
             			</item>

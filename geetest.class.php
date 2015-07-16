@@ -126,14 +126,10 @@ JS;
     public function login_captcha($cur_mod , $geetest_id , $page_type, $param){
         $geetestlib = new geetestlib();   
         global $_G;
-        if ($geetestlib->register($this->keyset['captchaid'])) {
-            $captcha = "<div id='$geetest_id'>";
-            $captcha .= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param);
-            $captcha .= '</div>';
-            return $captcha;
-        }else{
-        return;
-        }
+        $captcha = "<div id='$geetest_id'>";
+        $captcha .= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param);
+        $captcha .= '</div>';
+        return $captcha;
     }
 
     public function _code_output($cur_mod = '', $geetest_id = 'gt_geetest', $page_type = '', $param = '') {
@@ -149,8 +145,7 @@ JS;
         $output = '';
         $cur_mod = empty($cur_mod) ? CURMODULE : $cur_mod;
         $style = $this->getStyle($page_type);
-              $geetestlib = new geetestlib();   
-        if ($geetestlib->register($this->keyset['captchaid'])) {
+        $geetestlib = new geetestlib();   
 
         switch( $cur_mod ){
             case 'register':
@@ -183,10 +178,7 @@ JS;
                  break;
             }
 
-              return $output;
-        }else{
-            return ;
-        }
+          return $output;
     }
 
     public function geetest_validate($challenge, $validate, $seccode){

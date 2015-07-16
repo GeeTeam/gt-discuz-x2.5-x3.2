@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.1.6]]></item>
+			<item id="version"><![CDATA[7.1.7]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -380,7 +380,7 @@
 				<item id="geetest_key"><![CDATA[私钥]]></item>
 				<item id="id_note"><![CDATA[极验验证是基于SAAS的云应用，此公钥为本站验证对应的唯一标识]]></item>
 				<item id="key_note"><![CDATA[对应其相应公钥，类似于密码，请勿泄露]]></item>
-				<item id="web_button_note"><![CDATA[注意：web端的ID和KEY仅可用于web端的验证！]]></item>
+				<item id="web_button_note"><![CDATA[注意：新生成的ID和KEY我们服务器会做一些初始化工作，建议10分钟后再开启验证！]]></item>
 				<item id="mobile_button_note"><![CDATA[注意：移动端的ID和KEY仅可用于移动端的验证！]]></item>
 				
 				
@@ -408,7 +408,7 @@
 				<p>(3).优化的手机版大大提高了对手机模板的兼容性，如果模板开发者完全按照模板的规则开发，插件是兼容的，若遇不兼容，建议替换成discuz原生模板。</p>
 				<p>(4).手机版极验验证针对移动端特点极大的改善了用户体验，使用更加便捷、炫酷、保障网站安全，建议站长们及时开启。</p>]]></item>
 				<item id="update"><![CDATA[更新说明]]></item>
-				<item id="update_node"><![CDATA[1、删除垃圾帖子过滤功能，并将会在7月10日左右发布极验验证码智能过滤版（即极验验证+帖子过滤，在插件后台搜索极验验证码智能过滤版下载即可，本插件还是仅保持验证功能）]]></item>
+				<item id="update_node"><![CDATA[1、去掉register模式的限制]]></item>
 				
 
             			</item>
