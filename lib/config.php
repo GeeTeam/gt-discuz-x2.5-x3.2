@@ -3,8 +3,8 @@
  return array (
   'keyset' => 
   array (
-    'captchaid' => 'a40fd3b0d712165c5d13e6f747e948d4',
-    'privatekey' => '0f1a37e33c9ed10dd2e133fe2ae9c459',
+    'captchaid' => '6055c3b4b35860d554ad91b823f927b5',
+    'privatekey' => 'd8e6e5299189cf9be0f2c26f387ffbb4',
   ),
   'mobile' => 
   array (

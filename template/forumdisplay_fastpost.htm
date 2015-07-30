@@ -1,0 +1,32 @@
+{eval
+function tpl_viewthread_fastpost_btn_extra() {
+global $_G;
+}
+<!--{block return}-->
+   <div ><table><tbody><tr><th style="width:80px;"><div>*asdasda:</div></th><td id="qwe">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#qwe","float");
+</script>
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_post_middle() {
+global $_G;
+}
+<!--{block return}-->
+
+    <div><table><tbody><tr><th style="width:80px;"><div>*qeweqwqweqwe:</div></th><td id="post_middle">
+<script type="text/javascript">
+    getCaptcha("#post_middle","float");
+</script>
+
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+}

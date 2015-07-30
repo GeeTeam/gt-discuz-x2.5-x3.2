@@ -1,0 +1,94 @@
+{eval
+function tpl_global_cpnav_top() {
+global $_G;
+}
+<!--{block return}-->
+    <script type="text/javascript" src="source/plugin/geetest/js/gt_init.js"></script>
+        <script type="text/javascript" src="source/plugin/geetest/js/gt_core.js"></script>
+        
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+
+
+function tpl_logging_input_output($gt_geetest_id) {
+global $_G;
+}
+<!--{block return}-->
+
+    <div><table><tbody><tr><th style="width:80px;"><div>*qeweqwqweqwe:</div></th><td id="{$gt_geetest_id}">
+<script type="text/javascript">
+    getCaptcha("#{$gt_geetest_id}","float");
+</script>
+
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+
+function tpl_forumdisplay_fastpost_btn_extra() {
+global $_G;
+}
+<!--{block return}-->
+
+   <div ><table><tbody><tr><th style="width:80px;"><div>*asdasda:</div></th><td id="btn_fastpost">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#btn_fastpost","float");
+</script>
+
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_post_infloat_middle() {
+global $_G;
+}
+<!--{block return}-->
+   <div ><table><tbody><tr><th style="width:80px;"><div>*asdasda:</div></th><td id="infloat_middle">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#infloat_middle","float");
+</script>
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_global_login_extra() {
+global $_G;
+}
+<!--{block return}-->
+    <script type="text/javascript">
+        var btn = document.getElementsByClassName('vm')[2];    
+        var clone_btn = btn.cloneNode(true);
+        btn.style.display = "none";
+        clone_btn.setAttribute('type', 'button');
+        clone_btn.id = "clone_btn";   
+        document.getElementsByClassName('fastlg_l')[1].appendChild(clone_btn);
+    </script>
+   <div ><table><tbody><tr><th style="width:80px;"><div></div></th><td id="index_login">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#index_login","popup","#clone_btn", 
+        function() {
+            console.log('111');
+            btn.click();
+        });
+</script>
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+}
+
+

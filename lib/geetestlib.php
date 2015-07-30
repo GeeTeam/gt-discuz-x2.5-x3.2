@@ -17,46 +17,52 @@ define('GT_API_SERVER', 'http://api.geetest.com');
 define('GT_SDK_VERSION', 'discuz_1.0');
 
 class geetestlib{
-	private $config = array();
+	public $config = array();
 	
 	public function __construct(){
 		$this->challenge = "";
-		$this->config = array(
-                	"captchaid" => "",
-                	"privatekey" => ""
-            		);
+		// $this->config = array(
+  //               	"captchaid" => "",
+  //               	"privatekey" => ""
+  //           		);
+		$this->config = @include dirname(__FILE__) . '/config.php';
 	}
-	public static function get_widget_mobile($captcha){
-	      return '<script type="text/javascript" src="http://api.geetest.com/get.php?gt='.$captcha.'&product=embed&width=300" async></script>';
-	}
+	// public static function get_widget_mobile($captcha){
+	//       return '<script type="text/javascript" src="http://api.geetest.com/get.php?gt='.$captcha.'&product=embed&width=300" async></script>';
+	// }
 
-	function register($captchaid) {
-		$this->challenge = $this->_send_request("/register.php", array("gt"=>$captchaid));
+	function register() {
+		$url = "http://api.geetest.com/register.php?gt=" . $this->config['keyset']['captchaid'];
+		$this->challenge = $this->_send_request($url);
+
+		// $this->challenge = $this->_send_request("/register.php", array("gt"=>$this->config['keyset']['captchaid']));
 		if (strlen($this->challenge) != 32) {
 			return 0;
 		}
 		return 1;
 	}
 
-	function get_widget($captchaid,$product, $popupbtnid="") {
-		$params = array(
-			"gt" => $captchaid,
-			"product" => $product,
-			"sdk" => GT_SDK_VERSION,
-			"rand" => rand(),
-		);
-		if ($product == "popup") {
-			$params["popupbtnid"] = $popupbtnid;
-		}
-		return '<script type="text/javascript" src="'.GT_API_SERVER.'/get.php?'.http_build_query($params).'"></script>';
-	}
+	// function get_widget($captchaid,$product, $popupbtnid="") {
+	// 	$params = array(
+	// 		"gt" => $captchaid,
+	// 		"product" => $product,
+	// 		"sdk" => GT_SDK_VERSION,
+	// 		"rand" => rand(),
+	// 	);
+	// 	if ($product == "popup") {
+	// 		$params["popupbtnid"] = $popupbtnid;
+	// 	}
+	// 	return '<script type="text/javascript" src="'.GT_API_SERVER.'/get.php?'.http_build_query($params).'"></script>';
+	// }
 	
 	
-	public function set_keyset($keyset){
-		$this->config = array_merge($this->config, $keyset);
-	}
+	// public function set_keyset($keyset){
+	// 	$this->config = array_merge($this->config, $keyset);
+	// }
 	
 	function validate($challenge, $validate, $seccode) {	
+        // file_put_contents("/home/tanxu/www/post.txt", "config=" . print_r($this->config,true) , FILE_APPEND);
+
 		if ( ! $this->_check_validate($challenge, $validate)) {
 			return FALSE;
 		}
@@ -76,7 +82,7 @@ class geetestlib{
 		if (strlen($validate) != 32) {
 			return FALSE;
 		}
-		if (md5($this->config['privatekey'].'geetest'.$challenge) != $validate) {
+		if (md5($this->config['keyset']['privatekey'].'geetest'.$challenge) != $validate) {
 			return FALSE;
 		} 
 		return TRUE;
@@ -101,21 +107,26 @@ class geetestlib{
 		return $response[1];
 	}
 
-	function _send_request($path, $data, $method="GET") {
-		$data['sdk'] = GT_SDK_VERSION;
-
-		if ($method=="GET") {
+	private function _send_request($url){
+	    	if(function_exists('curl_exec')){
+			$ch = curl_init();
+			$timeout = 2;
+			curl_setopt ($ch, CURLOPT_URL, $url);
+			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+			$data = curl_exec($ch);
+			curl_close($ch);
+		}else{
 			$opts = array(
 			    'http'=>array(
 				    'method'=>"GET",
 				    'timeout'=>2,
-			    )
-		    );
-		    $context = stream_context_create($opts);
-			$response = file_get_contents(GT_API_SERVER.$path."?".http_build_query($data), false, $context);
-
-		} 
-		return $response;
+			    	)	
+			    );
+			$context = stream_context_create($opts);
+			$data = file_get_contents($url, false, $context);
+		}
+		return $data;
 	}
 
 
