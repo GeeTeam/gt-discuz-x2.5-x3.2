@@ -57,7 +57,7 @@ JS;
 		$cur_mod = 'popup';
 		$btn_id = "addfundssubmit_btn";
 		$gt_geetest_id = 'gt_spacecp_credit_bottom';
-		return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_pay_submit($gt_geetest_id);
+		// return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_pay_submit($gt_geetest_id);
 	}
     //广播
 	function follow_top() {
