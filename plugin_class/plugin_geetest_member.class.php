@@ -1,89 +1,107 @@
 <?php
-
-
-   
 class plugin_geetest_member  extends plugin_geetest{  
 
-    // function register_input_output(){       
-    //     $cur_mod = "register";
-    //     if($_GET["infloat"] == "yes"){
-    //         $gt_geetest_id = "gt_float_register_input";
-    //         $page_type = "register_float";
-    //     }else{
-    //         $gt_geetest_id = "gt_page_register_input";
-    //         $page_type = "register";
-    //     }
-    //     return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
-
-    // }
+    function register_input_output(){       
+        global $_G;
+        return $this->return_captcha("tpl_register_input_output","member");
+    }
 
     function logging_input_output(){
         global $_G;
-        include_once template('geetest:module');
-        if($_GET["infloat"] == "yes"){
-            $gt_geetest_id = "gt_float_logging_input";
-            // $page_type = "logging_float";
-        }else{
-            $gt_geetest_id = "gt_page_logging_input";
-            // $page_type = "logging";
-        }
-        return tpl_logging_input_output($gt_geetest_id);
+        return $this->return_captcha("tpl_logging_input_output","member");
     }
-
-    
 
     function register_code(){
         global $_G;
         $cur = CURMODULE;
-        // if($this->_cur_mod_is_valid() && $this->captcha_allow && $cur == "register") {
+        session_start();
+        if($this->captcha_allow && $cur == "register") {
             if(submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)){
-                $response = $this->geetest_validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
-                if($response != 1){
-                    if($response == -1){
+                if($_SESSION['gtserver'] ==1){
+                    $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
+                    if($response != 1){
+                        if($response == -1){
+                            showmessage( lang('plugin/geetest', 'seccode_expired') );
+                        }else if($response == 0){
+                            showmessage(lang('plugin/geetest', 'seccode_invalid'));
+                        }
+                    }
+                }else{
+                    $validate = $_POST['geetest_validate'];
+                    if ($validate) {
+                        $value = explode("_",$validate);
+                        $challenge = $_SESSION['challenge'];
+                        $ans = $this->geetest->decode_response($challenge,$value['0']);
+                        $bg_idx = $this->geetest->decode_response($challenge,$value['1']);
+                        $grp_idx = $this->geetest->decode_response($challenge,$value['2']);
+                        $x_pos = $this->geetest->get_failback_pic_ans($bg_idx ,$grp_idx);
+                        if (abs($ans - $x_pos) < 4) {
+                            $success=1;
+                        }else{
+                            showmessage( lang('plugin/geetest', 'seccode_expired') );
+                        }
+                    }else{
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));
-                    }else if($response == 0){
-                        showmessage( lang('plugin/geetest', 'seccode_expired') );
                     }
                 }
             }       
-        // }
+        }
     }
+    
     function logging_code() {
         if($_GET['action'] == "logout"){
             return;
         }
         $cur = CURMODULE;
-        // if ($this->open && $this->logging_mod_valid()) {
-            // if($_GET['username'] != "" && $_GET['password'] != "" && $_GET['lssubmit'] == "yes"){
-            //     if(( $_GET['geetest_validate'] == null && $_GET['geetest_seccode'] == null) || 
-            //         ($_GET['geetest_validate'] == "" && $_GET['geetest_seccode'] == "")){
-            //         $this->_show();
-            //         return;
-            //     }
-            // }
-        // }else{
-        //     return;
-        // }
+        session_start();
+        if ($this->captcha_allow && $cur == "logging") {
+            if($_GET['username'] != "" && $_GET['password'] != "" && $_GET['lssubmit'] == "yes"){
+                if(( $_GET['geetest_validate'] == null && $_GET['geetest_seccode'] == null) || 
+                    ($_GET['geetest_validate'] == "" && $_GET['geetest_seccode'] == "")){
+                    $this->_show();
+                    return;
+                }
+            }
+        }else{
+            return;
+        }
 
         if( ! $this->has_authority() ){
             return;
         }
 
         global $_G;
-        // if($this->_cur_mod_is_valid() && $this->captcha_allow) {
+        if($cur == "logging" && $this->captcha_allow) {
             if(submitcheck('loginsubmit', 1, $seccodestatus) && empty($_GET['lssubmit'])) {//
-                $response = $this->geetest_validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
-                if($response != 1){//
-                    if($response == -1){
+                if($_SESSION['gtserver'] ==1){
+                    $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
+                    if($response != 1){//
+                        if($response == -1){
+                            showmessage(lang('plugin/geetest', 'seccode_expired'));
+                        }else if($response == 0){
+                            showmessage( lang('plugin/geetest', 'seccode_invalid'));
+                        }
+                    }
+                }else{
+                    $validate = $_POST['geetest_validate'];
+                    if ($validate) {
+                        $value = explode("_",$validate);
+                        $challenge = $_SESSION['challenge'];
+                        $ans = $this->geetest->decode_response($challenge,$value['0']);
+                        $bg_idx = $this->geetest->decode_response($challenge,$value['1']);
+                        $grp_idx = $this->geetest->decode_response($challenge,$value['2']);
+                        $x_pos = $this->geetest->get_failback_pic_ans($bg_idx ,$grp_idx);
+                        if (abs($ans - $x_pos) < 4) {
+                            $success=1;
+                        }else{
+                            showmessage( lang('plugin/geetest', 'seccode_expired') );
+                        }
+                    }else{
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));
-                    }else if($response == 0){
-                        showmessage( lang('plugin/geetest', 'seccode_expired') );
                     }
                 }
-                 
             }
-            
-        // }
+        }
     }
   
     public function _show(){

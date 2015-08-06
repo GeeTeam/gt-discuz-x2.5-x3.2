@@ -1,4 +1,4 @@
-var getCaptcha = function (data_ele, data_style,data_btn, sFun) {
+var getCaptcha = function (data_ele, data_style,data_btn) {
     var xmlHttp; 
 function createxmlHttpRequest() { 
     if (window.ActiveXObject) { 
@@ -56,9 +56,6 @@ var loadGeetest = function(config) {
     });
     if (data_style == "popup" || data_btn != "") {
         gt_captcha_obj.appendTo(data_ele).bindOn(data_btn);
-        if (typeof sFun === 'function') {
-            gt_captcha_obj.onSuccess (sFun);
-        }
     }else{
         gt_captcha_obj.appendTo(data_ele);
     }

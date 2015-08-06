@@ -183,130 +183,24 @@
 				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="5">
-				<item id="displayorder"><![CDATA[6]]></item>
-				<item id="title"><![CDATA[註冊頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[register]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 auto auto]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="6">
-				<item id="displayorder"><![CDATA[7]]></item>
-				<item id="title"><![CDATA[註冊浮動窗驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[register_float]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 auto auto]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="7">
-				<item id="displayorder"><![CDATA[8]]></item>
-				<item id="title"><![CDATA[登陸頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[logging]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 auto auto]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="8">
-				<item id="displayorder"><![CDATA[9]]></item>
-				<item id="title"><![CDATA[登陸浮動窗驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[logging_float]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 auto auto]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="9">
-				<item id="displayorder"><![CDATA[10]]></item>
-				<item id="title"><![CDATA[發帖頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[newthread]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="10">
-				<item id="displayorder"><![CDATA[11]]></item>
-				<item id="title"><![CDATA[回帖頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[reply]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="11">
-				<item id="displayorder"><![CDATA[12]]></item>
-				<item id="title"><![CDATA[發帖回帖浮動窗驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[newthread_reply_float]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="12">
-				<item id="displayorder"><![CDATA[13]]></item>
-				<item id="title"><![CDATA[發帖回帖高級頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[newthread_reply_grade]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="13">
-				<item id="displayorder"><![CDATA[14]]></item>
-				<item id="title"><![CDATA[廣播頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[follow]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="14">
-				<item id="displayorder"><![CDATA[15]]></item>
-				<item id="title"><![CDATA[日誌頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[blog]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="15">
-				<item id="displayorder"><![CDATA[16]]></item>
-				<item id="title"><![CDATA[留言/評論頁面驗證位置:]]></item>
-				<item id="description"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-				<item id="variable"><![CDATA[comment]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[10 10 0 0]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			
 		</item>
 		<item id="language">
 			<item id="scriptlang">
-                <item id="open_seccode_safety"><![CDATA[開啟驗證安全2.0]]></item>
+				<item id="open_seccode_safety"><![CDATA[開啟驗證安全2.0]]></item>
                 <item id="open_captcha"><![CDATA[是否啟用驗證插件]]></item>
                 <item id="open_captcha_note"><![CDATA[在本站點啟用極驗驗證來保障驗證安全]]></item>
-
                 <item id="open_mobile"><![CDATA[是否開啟手機版驗證]]></item>
                 <item id="open_mobile_note"><![CDATA[開啟手機驗證的前提是要用插件模板覆蓋discuz原有的手機模板，詳情請點擊<a target="_blank" href="http://www.geetest.com/install/#discuz">這裡！</a>]]></item>
-                
                 <item id="open_default"><![CDATA[是否屏蔽discuz默認驗證碼]]></item>
                 <item id="open_default_note"><![CDATA[極驗基於驗證安全2.0技術，功能大幅超越傳統驗證碼。此處建議屏蔽，以免功能衝突]]></item>
-
-                <item id="open_advertisement"><![CDATA[開啟廣告賺取佣金]]></item>
-                <item id="open_cps"><![CDATA[是否啟用極驗cps廣告]]></item>
+				<item id="open_advertisement"><![CDATA[開啟廣告賺取佣金]]></item>
+               	<item id="open_cps"><![CDATA[是否啟用極驗cps廣告]]></item>
                 <item id="open_cps_note"><![CDATA[在驗證圖片位顯示CPS廣告，最高佣金比例16%]]></item>
-
-                <item id="open_text"><![CDATA[是否啟用極驗文字鏈廣告]]></item>
-                <item id="open_text_note"><![CDATA[在驗證交互界面顯示文字鏈廣告，12月矚目開啟]]></item>
-                <item id="setting_succeed"><![CDATA[設置成功]]></item>
-
-
-                <item id="open_mod"><![CDATA[需要開啟驗證的模塊]]></item>
-                <item id="reg_label"><![CDATA[註冊模塊]]></item>
+	            <item id="open_text"><![CDATA[是否啟用極驗文字鏈廣告]]></item>
+	            <item id="open_text_note"><![CDATA[在驗證交互界面顯示文字鏈廣告，12月矚目開啟]]></item>
+	            <item id="setting_succeed"><![CDATA[設置成功]]></item>
+	            <item id="open_mod"><![CDATA[需要開啟驗證的模塊]]></item>
+               	<item id="reg_label"><![CDATA[註冊模塊]]></item>
 				<item id="login_label"><![CDATA[登錄模塊]]></item>
 				<item id="newthread_label"><![CDATA[發帖模塊]]></item>
 				<item id="reply_label"><![CDATA[回帖模塊]]></item>
@@ -315,17 +209,13 @@
 				<item id="blog_label"><![CDATA[日誌模塊]]></item>
 				<item id="comment_label"><![CDATA[留言模塊]]></item>
 				<item id="pay_label"><![CDATA[充值模塊]]></item>
-
-				
 				<item id="see_more"><![CDATA[查看更多]]></item>
 				<item id="modify_id_key"><![CDATA[修改ID和KEY]]></item>
 				<item id="click_modify"><![CDATA[確認修改]]></item>
-
 				<item id="feeback_label"><![CDATA[意見內容：]]></item>
 				<item id="id_and_key_error"><![CDATA[ID或KEY錯誤！]]></item>
 				<item id="seccode_invalid"><![CDATA[錯誤：滑動驗證不通過！請再次滑動，通過驗證！]]></item>
 				<item id="seccode_expired"><![CDATA[錯誤：請不要再次提交！滑動驗證已使用過，請刷新之後在使用！]]></item>
-
 				<item id="hidden"><![CDATA[隱藏高級設置]]></item>				
 				<item id="show"><![CDATA[顯示高級設置]]></item>				
 				<item id="choose_open"><![CDATA[選擇性關閉驗證]]></item>
@@ -342,11 +232,9 @@
 				<item id="blog_style_label"><![CDATA[日誌頁面驗證位置]]></item>
 				<item id="comment_style_label"><![CDATA[留言/評論頁面驗證位置]]></item>
 				<item id="style_note"><![CDATA[請按照格式正確設置驗證位置，中間用一個空格隔開。如10 10 10 auto]]></item>
-
 				<item id="captcha_advance_style_label"><![CDATA[驗證位置設置說明]]></item>
 				<item id="captcha_advance_style_note"><![CDATA[1    輸入驗證所在模塊頁面中的位置，分別距離上下左右的邊距。如 1 10 12 30，表示距離上1像素，距離下10像素，距離左12像素，距離右30像素。<p> 
 				2    如果要居中顯示，需要設置上下auto，或者左右auto。如 10 10 auto auto，表示左右居中。]]></item>
-
 				<item id="post_num_captcha_label"><![CDATA[根據發帖數關閉驗證:]]></item>
 				<item id="post_num_captcha_note"><![CDATA[發帖數超過此設置的會員將不受驗證碼功能限制，0 表示所有會員均受限制]]></item>
 				<item id="web_id_key"><![CDATA[web端 ID 和 KEY 設置]]></item>
@@ -355,7 +243,6 @@
 				<item id="mobile_id_key"><![CDATA[移動端 ID 和 KEY 設置]]></item>
 				<item id="mobile_captcha"><![CDATA[移動端 ID]]></item>
 				<item id="mobile_private"><![CDATA[移動端 KEY]]></item>
-
 				<item id="assist"><![CDATA[相關幫助]]></item>
 				<item id="tutorial_label"><![CDATA[使用教程]]></item>
 				<item id="website"><![CDATA[官方網站]]></item>
@@ -373,17 +260,13 @@
 				<item id="recommend_note"><![CDATA[邀請鏈接：]]></item>
 				<item id="invite"><![CDATA[已經邀請]]></item>
 				<item id="feeback_success"><![CDATA[反饋成功]]></item>
-
-			
 				<item id="relevance_cloud"><![CDATA[關聯到極驗雲]]></item>
 				<item id="geetest_id"><![CDATA[公鑰]]></item>
 				<item id="geetest_key"><![CDATA[私鑰]]></item>
 				<item id="id_note"><![CDATA[極驗驗證是基於SAAS的雲應用，此公鑰為本站驗證對應的唯一標識]]></item>
 				<item id="key_note"><![CDATA[對應其相應公鑰，類似於密碼，請勿洩露]]></item>
-				<item id="web_button_note"><![CDATA[註意：新生成的ID和KEY我們服務器會做壹些初始化工作，建議10分鐘後再開啟驗證！]]></item>
-				<item id="mobile_button_note"><![CDATA[註意：移動端的ID和KEY僅可用於移動端的驗證！]]></item>
-				
-				
+				<item id="web_button_note"><![CDATA[注意：新生成的ID和KEY我們服務器會做一些初始化工作，建議10分鐘後再開啟驗證！]]></item>
+				<item id="mobile_button_note"><![CDATA[注意：移動端的ID和KEY僅可用於移動端的驗證！]]></item>
 				<item id="relevance_geetest_account"><![CDATA[關聯極驗賬號]]></item>
 				<item id="geetest_account"><![CDATA[極驗賬號]]></item>
 				<item id="not_relevance"><![CDATA[尚未關聯極驗賬號]]></item>
@@ -391,27 +274,10 @@
 				<item id="commission_withdrawal"><![CDATA[佣金提現]]></item>
 				<item id="acquisition"><![CDATA[已獲得]]></item>
 				<item id="acquisition_note"><![CDATA[暫不支持提現]]></item>
-				
-				<item id="FAQ"><![CDATA[常見問題及說明]]></item>
-				<item id="faq1"><![CDATA[1、」滑動驗證碼「文字能顯示，驗證條無法顯示]]></item>
-				<item id="faq2"><![CDATA[2、驗證模塊的位置不對，影響了整個佈局]]></item>
-				<item id="faq3"><![CDATA[3、開啟了指定模塊的驗證，但驗證條和滑動驗證碼幾個字都無法顯示]]></item>
-				<item id="faq4"><![CDATA[4、ID和KEY無法更改]]></item>
-				<item id="faq5"><![CDATA[5、手機版使用方法及說明]]></item>
-
-				<item id="ans1"><![CDATA[問題原因及解決方法：可能的原因是服務器權限不夠，登陸服務器查看`source/plugin/geetest/lib/config.php`文件，ID和KEY 是否為null，若為空，手動寫進config.php文件。]]></item>
-				<item id="ans2"><![CDATA[問題原因及解決方法：可能是模板不兼容導致的，可以再插件後台中的位置設置中進行調整。]]></item>
-				<item id="ans3"><![CDATA[問題原因及解決方法：可能是模板沒有插件嵌入點，建議換成discuz默認模板。]]></item>
-				<item id="ans4"><![CDATA[問題原因及解決方法：可能是緩存寫不進去。方法1：在discuz後台手動更新緩存；方法2：手動寫進`source/plugin/geetest/lib/config.php`文件中。]]></item>
-				<item id="ans5"><![CDATA[<p>(1).在discuz插件後台中的極驗插件設置中，手機版的ID和KEY必須在my.geetest.com申請，且注意選擇ID類型為移動端。PC端和移動端的ID不通用。</p>
-				<p>(2).如果您是老用戶（即您之前使用geetest的文件覆蓋過discuz的手機模板），如遇到插件驗證碼無法彈出，手機版的ID和KEY也正常無誤，將 /template/default文件夾 替換成原生的discuz文件，即可解決問題。</p>
-				<p>(3).優化的手機版大大提高了對手機模板的兼容性，如果模板開發者完全按照模板的規則開發，插件是兼容的，若遇不兼容，建議替換成discuz原生模板。</p>
-				<p>(4).手機版極驗驗證針對移動端特點極大的改善了用戶體驗，使用更加便捷、炫酷、保障網站安全，建議站長們及時開啟。</p>]]></item>
-				<item id="update"><![CDATA[更新說明]]></item>
-				<item id="update_node"><![CDATA[1、去掉register模式的限制]]></item>
-				
-
-            			</item>
+            </item>
+            <item id="templatelang">
+				<item id="move_to_captcha"><![CDATA[滑動驗證]]></item>
+			</item>
 		</item>
 	</item>
 </root>

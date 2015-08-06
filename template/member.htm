@@ -1,0 +1,34 @@
+{eval
+
+function tpl_register_input_output() {
+global $_G;
+}
+<!--{block return}-->
+   <div class="rfm"><table><tbody><tr><th><span class="rq">*</span><label>{lang geetest:move_to_captcha}:</label></th><td id="register_input">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#register_input","float");
+</script>
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_logging_input_output() {
+global $_G;
+}
+<!--{block return}-->
+
+    <div class="rfm"><table><tbody><tr><th><span class="rq">*</span><label>{lang geetest:move_to_captcha}:</label></th><td id="logging_input">
+<script type="text/javascript">
+    getCaptcha("#logging_input","float");
+</script>
+
+</td></tr></tbody></table></div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+}

@@ -6,6 +6,7 @@
 error_reporting(0);
 require_once dirname(__FILE__) . '/lib/geetestlib.php';
 $config = include @dirname(__FILE__) . '/lib/config.php';
+$keyset=isset($config['cache_keyset'])?$config['cache_keyset']:$config['keyset'];
 $GtSdk = new geetestLib();
 session_start();
 $_SESSION['gtsdk'] = $GtSdk;
@@ -14,7 +15,7 @@ if ($return) {
     $_SESSION['gtserver'] = 1;
     $result = array(
             'success' => 1,
-            'gt' => $config['keyset']['captchaid'],
+            'gt' => $keyset['captchaid'],
             'challenge' => $GtSdk->challenge
         );
     echo json_encode($result);
@@ -25,12 +26,11 @@ if ($return) {
     $challenge = $rnd1 . substr($rnd2,0,2);
     $result = array(
             'success' => 0,
-            'gt' => $config['keyset']['captchaid'],
+            'gt' => $keyset['captchaid'],
             'challenge' => $challenge
         );
     $_SESSION['challenge'] = $result['challenge'];
     echo json_encode($result);
 }
-        
-
+       
  ?>

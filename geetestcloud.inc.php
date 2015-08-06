@@ -139,6 +139,9 @@ $web_keyset = $_POST['web_keyset'];
         // print_r($result_ajax);
         if ($result_ajax["message"] == "not_reg" || $result_ajax["message"]=="success") {
             savecache('gt_cache',$gt_cache); 
+            $config = @include DISCUZ_ROOT.'source/plugin/geetest/lib/config.php';
+            $config['cache_keyset']=$gt_cache;
+            file_put_contents(DISCUZ_ROOT.'source/plugin/geetest/lib/config.php', "<?php return ".var_export($config,true).";?>");
         }
 
 $mobile_keyset = $_POST['mobile_keyset'];
@@ -148,6 +151,9 @@ $mobile_keyset = $_POST['mobile_keyset'];
         // print_r($result_ajax);
         if ($result_ajax["message"] == "not_reg" || $result_ajax["message"]=="success") {
             savecache('gt_mobile',$gt_mobile); 
+            $config = @include DISCUZ_ROOT.'source/plugin/geetest/lib/config.php';
+            $config['cache_gt_mobile']=$gt_mobile;
+            file_put_contents(DISCUZ_ROOT.'source/plugin/geetest/lib/config.php', "<?php return ".var_export($config,true).";?>");
         }
 function check($data){
     if ($data != "" || $data != null ) {
