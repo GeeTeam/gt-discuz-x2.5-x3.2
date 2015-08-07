@@ -65,13 +65,13 @@
 ------------------------------------
 
 1. geetestcloud.inc.php
-	后台“极验云”程序模块:用户配置文件,此处填写用户自己申请的验证模块ID/KEY
+    后台“极验云”程序模块:用户配置文件,此处填写用户自己申请的验证模块ID/KEY
 #. advance.inc.php
-	后台“高级功能”程序模块
+    后台“高级功能”程序模块
 #. feedback.inc.php
-	后台“帮助反馈”程序模块
+    后台“帮助反馈”程序模块
 #. about.inc.php
-	后台“常见问题”程序模块
+    后台“常见问题”程序模块
 	
 
 
@@ -79,35 +79,35 @@
 -------------------------------------------------
 
 1. gt_check_server.php
-	向极验验证码服务器发送请求，用户判断极验服务器是否Down机,获取加载验证码所需参数
+    向极验验证码服务器发送请求，用户判断极验服务器是否Down机,获取加载验证码所需参数
 #. /lib
-	1. config.php
-	    captchaid和privatekey配置文件
-	2. geetestlib.php
-	    极验的PHP SDK库,提供只带拼图行为验证的功能
+    1. config.php
+        captchaid和privatekey配置文件
+    2. geetestlib.php
+        极验的PHP SDK库,提供只带拼图行为验证的功能
 #. /js
-	1. geetest_mobile.js
-	    移动端加载极验验证码以及调用回调函数
-	2. gt_core.js
-	    PC端加载极验验证码
-	3. gt_init.js
-	    用于PC端引入验证的前端 gt_lib 库
-	4. mobile_keyset.js
-	    插件后台“极验云”模块用户修改移动端验证ID/KEY时生成ajax请求
-	5. web_keyset.js
-	    插件后台“极验云”模块用户修改Web端验证ID/KEY时生成ajax请求
+    1. geetest_mobile.js
+        移动端加载极验验证码以及调用回调函数
+    2. gt_core.js
+        PC端加载极验验证码
+    3. gt_init.js
+        用于PC端引入验证的前端 gt_lib 库
+    4. mobile_keyset.js
+        插件后台“极验云”模块用户修改移动端验证ID/KEY时生成ajax请求
+    5. web_keyset.js
+        插件后台“极验云”模块用户修改Web端验证ID/KEY时生成ajax请求
 #. install.php
-	安装插件时动态获取验证ID/KEY
+    安装插件时动态获取验证ID/KEY
 #. upgrade.php
-	更新插件时执行
+    更新插件时执行
 #. discuz_plugin_geetest_SC_GBK.xml
-        编码为GBK简体的插件语言包
+    编码为GBK简体的插件语言包
 #. discuz_plugin_geetest_SC_UTF8.xml
-        编码为UTF8简体的插件语言包
+    编码为UTF8简体的插件语言包
 #. discuz_plugin_geetst_TC_BIG5.xml
-        编码为BIG5繁体的插件语言包
+    编码为BIG5繁体的插件语言包
 #. discuz_plugin_geetest_TC_UTF8.xml
-        编码为UTF8繁体的插件语言包
+    编码为UTF8繁体的插件语言包
 
 
 
