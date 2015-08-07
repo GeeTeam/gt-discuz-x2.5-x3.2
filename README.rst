@@ -40,7 +40,7 @@
     geetest插件PC端入口文件，获取插件设置参数，定义全局嵌入点类
 #. geetest_mobile.class.php
     geetest插件移动端入口文件，获取插件设置参数，定义全局嵌入点类
-#. /plugin_class（在脚本嵌入点中输出验证码并调用提交验证Sdk）
+#. /plugin_class
     1. plugin_geetest_forum.class.php
         forum脚本嵌入点类
     #. plugin_geetest_group.class.php
