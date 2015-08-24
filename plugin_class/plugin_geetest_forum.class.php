@@ -26,24 +26,16 @@ class plugin_geetest_forum extends plugin_geetest {
         global $_G;
         return $this->return_captcha("tpl_post_middle","forum");
     }
+    //快速回复(默认板块)
+    function forumdisplay_postbutton_top(){
+        global $_G;
+        return $this->return_captcha("tpl_forumdisplay_postbutton_top","forum");
+    }
     //快速回复
-    // function viewthread_modaction(){
-    // 	//2.5版本不存在快速回复
-    // 	include_once(DISCUZ_ROOT.'/source/discuz_version.php');
-    // 	//其他版本
-    // 	global $_G;
-    	
-    // 	$allowfastreply = $_G['setting']['allowfastreply'] 
-    // 					&& $_G['group']['allowpost'];
-    // 					//快速回复是否开启,并且有发帖权限
-
-    // 	if(DISCUZ_VERSION != "X2.5" && $allowfastreply == 1){
-    // 		$cur_mod = 'reply';
-    // 		$gt_geetest_id = 'gt_viewthread_modaction';
-    //     	return $this->_code_output($cur_mod, $gt_geetest_id).$this->_fix_fast_reply_pos($gt_geetest_id);
-    // 	}
-
-    // }
+    function viewthread_modaction(){
+        global $_G;
+        return $this->return_captcha("tpl_viewthread_modaction","forum");
+    }
 	
     //处理发帖/恢复/编辑验证
     function post_recode() {

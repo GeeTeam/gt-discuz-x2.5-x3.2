@@ -68,4 +68,43 @@ global $_G;
 {eval
 }
 
+function tpl_forumdisplay_postbutton_top() {
+global $_G;
+}
+<!--{block return}-->
+   <div id="reply_captcha"><table><tbody><tr><th style="width:80px;"><div></div></th><td id="quick_response">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#quick_response","popup","#livereplysubmit");
+    var captcha=document.getElementById("reply_captcha");
+    var p=document.getElementsByClassName("ptm pnpost");
+    var parent=p[0].parentNode;
+    parent.insertBefore(captcha,p[0]);
+</script>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_viewthread_modaction() {
+global $_G;
+}
+<!--{block return}-->
+   <div id="reply_captcha_2"><table><tbody><tr><th style="width:80px;"><div></div></th><td id="quick_response_2">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#quick_response_2","popup","#vreplysubmit");
+    function move_captcha_toform(){
+      var captcha=document.getElementById("reply_captcha_2");
+      var td=document.getElementById("vfastpost");
+      var parent=td.parentNode;
+      parent.insertBefore(captcha,td);
+    }
+    _attachEvent(window, 'load', move_captcha_toform);
+</script>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
 }

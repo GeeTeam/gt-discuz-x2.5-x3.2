@@ -9,7 +9,6 @@ C::import('geetestlib','plugin/geetest/lib');
 class plugin_geetest{  
     public $captcha_allow = false;//当前模块是否开启验证码验证
     public $mods = array();//需要开启验证的位置
-    public $style = array();
     public $config = array();
     public $open ;//验证是否开启
     public $geetest;
@@ -20,7 +19,6 @@ class plugin_geetest{
         //读缓存信息
         $this->mods = unserialize($_G['cache']['plugin']['geetest']['mod']);
         $this->open = $_G['cache']['plugin']['geetest']['open']; 
-        $this->style = $_G['cache']['plugin']['geetest'];
 
         //初始化
         if(($this->open == '1')&&($this->_cur_mod_is_valid())){
