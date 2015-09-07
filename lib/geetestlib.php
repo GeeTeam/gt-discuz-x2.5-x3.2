@@ -1,16 +1,8 @@
 <?php
 /*
  * Copyright (c) 2011 by geetest.com
- * Author: JayzWoo
  * Created: 2011-5-5
  * Function: geetest API php code
- * Version: v2.4
- * Date: 2013-3-19
- * PHP library for geetest - 脫隆脧贸脗毛 - 脩茅脰陇脗毛鹿茫赂忙脭脝路镁脦帽脝陆脤篓.
- *    - Documentation and latest version
- *          http://www.geetest.com/
- *    - Get a geetest API Keys
- *          http://www.geetest.com/server/signup.php
  */
 
 define('GT_API_SERVER', 'http://api.geetest.com');
@@ -100,6 +92,23 @@ class geetestlib{
 			return $response[1];
 			}
 	}
+
+	public function send_post($url, $post_data) {  
+		  
+		$postdata = http_build_query($post_data);  
+		$options = array(  
+			'http' => array(  
+			'method' => 'POST',  
+			'header' => 'Content-type:application/x-www-form-urlencoded',  
+			'content' => $postdata,  
+			'timeout' => 15 * 60 // 超时时间（单位:s）  
+			)  
+		);  
+		$context = stream_context_create($options);  
+		$result = file_get_contents($url, false, $context);  
+
+		return $result;  
+		} 
 
 	private function _send_request($url){
 	    	if(function_exists('curl_exec')){

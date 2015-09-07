@@ -7,8 +7,9 @@ loadcache("gt_cache");
 
 
 $privatekey = md5($_G['cache']['gt_cache']['privatekey']);
+$url = "http://account.geetest.com/api/discuz/login?captchaid=".$_G['cache']['gt_cache']['captchaid']."&privatekey=".$_G['cache']['gt_cache']['privatekey']."&token=".md5('discuz'.(string)time()).'&random='.rand(1000000000,9999999999);
 $html = <<<HTML
-	<iframe src="http://my.geetest.com/api/discuz/login/captchaid={$_G['cache']['gt_cache']['captchaid']}privatekey={$privatekey}/" style="height:820px;width:1200px;border:none;background:white"></iframe>
+	<iframe src="{$url}" style="height:820px;width:1200px;border:none;background:white"></iframe>
 
 
 HTML;

@@ -22,7 +22,7 @@
                     $.ajax({
                         type:'GET',
                         async:false,
-                        url:'http://my.geetest.com/api/discuz/value',
+                        url:'http://account.geetest.com/api/discuz/value',
                         dataType:'jsonp',
                         data:{"captchaid":$("#web_captcha").val(),"privatekey":$("#web_private").val()},
                         jsonp:"callback",

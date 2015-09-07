@@ -96,26 +96,6 @@ $recommend_label = plang('recommend_label');
 $recommend_note = plang('recommend_note');
 $invite = plang('invite');
 
-$data = array(
-	'captchaid' => $_G['cache']['gt_cache']['captchaid'],
-	'privatekey' => $_G['cache']['gt_cache']['privatekey'],
-	);
-$result_post = $geetestlib->send_post("http://my.geetest.com/api/discuz/inv",$data);
-$result_post = json_decode($result_post,true);
-if ($result_post['message'] == "discuz") {
-	$num = '0';
-	$user = 'discuz';
-}elseif($result_post['message'] == "success"){
-	$num = $result_post['num'];
-	$user = $result_post['email'];
-}
-
-
-
-
-
-
-
 
 function plang($str) {
 	return lang('plugin/geetest', $str);

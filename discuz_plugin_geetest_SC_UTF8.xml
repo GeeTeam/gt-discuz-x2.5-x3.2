@@ -187,56 +187,15 @@
 		<item id="language">
 			<item id="scriptlang">
 				<item id="open_seccode_safety"><![CDATA[开启验证安全2.0]]></item>
-                <item id="open_captcha"><![CDATA[是否启用验证插件]]></item>
-                <item id="open_captcha_note"><![CDATA[在本站点启用极验验证来保障验证安全]]></item>
-                <item id="open_mobile"><![CDATA[是否开启手机版验证]]></item>
-                <item id="open_mobile_note"><![CDATA[开启手机验证的前提是要用插件模板覆盖discuz原有的手机模板，详情请点击<a target="_blank" href="http://www.geetest.com/install/#discuz">这里！</a>]]></item>
-                <item id="open_default"><![CDATA[是否屏蔽discuz默认验证码]]></item>
-                <item id="open_default_note"><![CDATA[极验基于验证安全2.0技术，功能大幅超越传统验证码。此处建议屏蔽，以免功能冲突]]></item>
-				<item id="open_advertisement"><![CDATA[开启广告赚取佣金]]></item>
-               	<item id="open_cps"><![CDATA[是否启用极验cps广告]]></item>
-                <item id="open_cps_note"><![CDATA[在验证图片位显示CPS广告，最高佣金比例16%]]></item>
-	            <item id="open_text"><![CDATA[是否启用极验文字链广告]]></item>
-	            <item id="open_text_note"><![CDATA[在验证交互界面显示文字链广告，12月瞩目开启]]></item>
-	            <item id="setting_succeed"><![CDATA[设置成功]]></item>
-	            <item id="open_mod"><![CDATA[需要开启验证的模块]]></item>
-               	<item id="reg_label"><![CDATA[注册模块]]></item>
-				<item id="login_label"><![CDATA[登录模块]]></item>
-				<item id="newthread_label"><![CDATA[发帖模块]]></item>
-				<item id="reply_label"><![CDATA[回帖模块]]></item>
-				<item id="edit_label"><![CDATA[编辑帖模块]]></item>
-				<item id="follow_label"><![CDATA[广播模块]]></item>
-				<item id="blog_label"><![CDATA[日志模块]]></item>
-				<item id="comment_label"><![CDATA[留言模块]]></item>
-				<item id="pay_label"><![CDATA[充值模块]]></item>
-				<item id="see_more"><![CDATA[查看更多]]></item>
-				<item id="modify_id_key"><![CDATA[修改ID和KEY]]></item>
+				<item id="open_captcha"><![CDATA[是否启用验证插件]]></item>
+				<item id="open_captcha_note"><![CDATA[在本站点启用极验验证来保障验证安全]]></item>
+				<item id="open_mobile"><![CDATA[是否开启手机版验证]]></item>
+			             	<item id="modify_id_key"><![CDATA[修改ID和KEY]]></item>
 				<item id="click_modify"><![CDATA[确认修改]]></item>
 				<item id="feeback_label"><![CDATA[意见内容：]]></item>
 				<item id="id_and_key_error"><![CDATA[ID或KEY错误！]]></item>
 				<item id="seccode_invalid"><![CDATA[错误：滑动验证不通过！请再次滑动，通过验证！]]></item>
 				<item id="seccode_expired"><![CDATA[错误：请不要再次提交！滑动验证已使用过，请刷新之后在使用！]]></item>
-				<item id="hidden"><![CDATA[隐藏高级设置]]></item>				
-				<item id="show"><![CDATA[显示高级设置]]></item>				
-				<item id="choose_open"><![CDATA[选择性关闭验证]]></item>
-				<item id="captcha_style_setting_label"><![CDATA[极验验证布局位置设置]]></item>
-				<item id="register_style_label"><![CDATA[注册页面验证位置]]></item>
-				<item id="register_float_style_label"><![CDATA[注册浮动窗验证位置]]></item>
-				<item id="logging_style_label"><![CDATA[登陆页面验证位置]]></item>
-				<item id="logging_float_style_label"><![CDATA[登陆浮动窗验证位置]]></item>
-				<item id="newthread_style_label"><![CDATA[发帖页面验证位置]]></item>
-				<item id="reply_style_label"><![CDATA[回帖页面验证位置]]></item>
-				<item id="newthread_reply_float_style_label"><![CDATA[发帖回帖验证浮动窗验证位置]]></item>
-				<item id="newthread_reply_grade_style_label"><![CDATA[发帖回帖高级页面验证位置]]></item>
-				<item id="follow_style_label"><![CDATA[广播页面验证位置]]></item>
-				<item id="blog_style_label"><![CDATA[日志页面验证位置]]></item>
-				<item id="comment_style_label"><![CDATA[留言/评论页面验证位置]]></item>
-				<item id="style_note"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
-				<item id="captcha_advance_style_label"><![CDATA[验证位置设置说明]]></item>
-				<item id="captcha_advance_style_note"><![CDATA[1    输入验证所在模块页面中的位置，分别距离上下左右的边距。如 1 10 12 30，表示距离上1像素，距离下10像素，距离左12像素，距离右30像素。<p> 
-				2    如果要居中显示，需要设置上下auto，或者左右auto。如 10 10 auto auto，表示左右居中。]]></item>
-				<item id="post_num_captcha_label"><![CDATA[根据发帖数关闭验证:]]></item>
-				<item id="post_num_captcha_note"><![CDATA[发帖数超过此设置的会员将不受验证码功能限制，0 表示所有会员均受限制]]></item>
 				<item id="web_id_key"><![CDATA[web端 ID 和 KEY 设置]]></item>
 				<item id="web_captcha"><![CDATA[web端 ID]]></item>
 				<item id="web_private"><![CDATA[web端 KEY]]></item>
@@ -255,10 +214,6 @@
 				<item id="feeback_title_label"><![CDATA[在线反馈]]></item>
 				<item id="feeback_content"><![CDATA[#填写你的反馈信息内容#]]></item>
 				<item id="feeback_note"><![CDATA[您可以将您宝贵的意见及时反馈给我们，我们会尽力完善极验验证，给您提供更便捷的验证服务！]]></item>
-				<item id="recommend"><![CDATA[推荐极验]]></item>
-				<item id="recommend_label"><![CDATA[如果您喜欢极验，那么也推荐您的朋友一起体验极验全新的验证安全2.0服务吧！邀请注册就送G币并获得下线收入10%提成。]]></item>
-				<item id="recommend_note"><![CDATA[邀请链接：]]></item>
-				<item id="invite"><![CDATA[已经邀请]]></item>
 				<item id="feeback_success"><![CDATA[反馈成功]]></item>
 				<item id="relevance_cloud"><![CDATA[关联到极验云]]></item>
 				<item id="geetest_id"><![CDATA[公钥]]></item>
@@ -274,8 +229,8 @@
 				<item id="commission_withdrawal"><![CDATA[佣金提现]]></item>
 				<item id="acquisition"><![CDATA[已获得]]></item>
 				<item id="acquisition_note"><![CDATA[暂不支持提现]]></item>
-            </item>
-            <item id="templatelang">
+           			</item>
+            			<item id="templatelang">
 				<item id="move_to_captcha"><![CDATA[滑动验证]]></item>
 			</item>
 		</item>
