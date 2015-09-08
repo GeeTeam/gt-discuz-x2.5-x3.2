@@ -2,12 +2,11 @@
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
     exit('Access Denied');
 }
+loadcache('plugin');
 require_once DISCUZ_ROOT.'source/plugin/geetest/lib/geetestlib.php';
 $geetestlib = new geetestlib();
-loadcache('gt_cache');
-loadcache('gt_mobile');
 
-
+$config = include DISCUZ_ROOT.'data/plugindata/geetest/config.php';
 $web_id_key = plang("web_id_key");
 $mobile_id_key = plang("mobile_id_key");
 $web_captcha = plang("web_captcha");
@@ -40,7 +39,7 @@ $html = <<<HTML
         <tr class="noborder">
             <td class="vtop rowform">     
 
-                <input name="id" value="{$_G['cache']['gt_cache']['captchaid']}" type="text" class="txt" id="web_captcha" style="border:none;">
+                <input name="id" value="{$config['webset']['captchaid']}" type="text" class="txt" id="web_captcha" style="border:none;">
 
             </td>
             <td class="vtop tips2" s="1" ><span id="msg_web_id"></span><span id="label_web_id">$id_note</span>
@@ -51,7 +50,7 @@ $html = <<<HTML
         </tr>
         <tr class="noborder">
             <td class="vtop rowform">
-                <input name="key" value="{$_G['cache']['gt_cache']['privatekey']}" type="text" class="txt" id="web_private" style="border:none;">
+                <input name="key" value="{$config['webset']['privatekey']}" type="text" class="txt" id="web_private" style="border:none;">
             </td>
             <td class="vtop tips2" s="1"><span id="msg_web_key"></span><span id="label_web_key">$key_note</span>
             </td>
@@ -84,7 +83,7 @@ $html = <<<HTML
         <tr class="noborder">
             <td class="vtop rowform">     
 
-                <input name="id" value="{$_G['cache']['gt_mobile']['captchaid']}" type="text" class="txt" id="mobile_captcha" style="border:none;">
+                <input name="id" value="{$config['mobileset']['captchaid']}" type="text" class="txt" id="mobile_captcha" style="border:none;">
 
             </td>
             <td class="vtop tips2" s="1" ><span id="msg_mobile_id"></span><span id="label_mobile_id">$id_note</span>
@@ -95,7 +94,7 @@ $html = <<<HTML
         </tr>
         <tr class="noborder">
             <td class="vtop rowform">
-                <input name="key" value="{$_G['cache']['gt_mobile']['privatekey']}" type="text" class="txt" id="mobile_private" style="border:none;">
+                <input name="key" value="{$config['mobileset']['privatekey']}" type="text" class="txt" id="mobile_private" style="border:none;">
             </td>
             <td class="vtop tips2" s="1"><span id="msg_mobile_key"></span><span id="label_mobile_key">$key_note</span>
             </td>
@@ -128,6 +127,7 @@ $html = <<<HTML
 HTML;
 echo $html;
 
+if (!empty($_POST['web_keyset'])) {
     $web_keyset = $_POST['web_keyset'];
     $gt_cache = check($web_keyset);
     $token = md5('discuz'.(string)time());
@@ -135,23 +135,16 @@ echo $html;
             'captchaid'=>$gt_cache['captchaid'],
             'privatekey'=>$gt_cache['privatekey'],
             'token' => $token
-        );
-        $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get",$post_data);
-        // print_r($result_ajax);
-        if ($result_cache == 0 || $result_cache == 1) {
-            savecache('gt_cache',$gt_cache); 
-            $config = @include DISCUZ_ROOT.'source/plugin/geetest/lib/config.php';
-            $config['cache_keyset']=$gt_cache;
-            file_put_contents(DISCUZ_ROOT.'source/plugin/geetest/lib/config.php', "<?php return ".var_export($config,true).";?>");
-        }
+    );
+    $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get",$post_data);
 
-// $data = array(
-//         "captchaid" => "b051a07ebb9fb3b8c12486d71fc170b7",
-//         "privatekey" => "0dd7d757d13275df0ada9e0ab3137761",
-//         "token" => $token
-//     );
-// $res = send_post($url,$data);
-// echo $res;
+    // print_r($result_ajax);
+    if ($result_cache == 0 || $result_cache == 1) {
+        $config['webset']=$gt_cache;
+        file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"."if(!defined('IN_DISCUZ')) exit('Access Denied');\n"." return ".var_export($config,true).";?>");
+    }
+}
+if (!empty($_POST['web_keyset'])) {
         $mobile_keyset = $_POST['mobile_keyset'];
         $gt_mobile = check($mobile_keyset);
         $post_data = array(
@@ -161,12 +154,10 @@ echo $html;
         );
         $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get",$post_data);
         if ($result_mobile == 0 || $result_mobile == 1) {
-            savecache('gt_mobile',$gt_mobile); 
-            $config = @include DISCUZ_ROOT.'source/plugin/geetest/lib/config.php';
-            $config['cache_gt_mobile']=$gt_mobile;
-            file_put_contents(DISCUZ_ROOT.'source/plugin/geetest/lib/config.php', "<?php return ".var_export($config,true).";?>");
+            $config['mobileset']=$gt_mobile;
+            file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"."if(!defined('IN_DISCUZ')) exit('Access Denied');\n"." return ".var_export($config,true).";?>");
         }
-
+}
         function check($data){
             if ($data != "" || $data != null ) {
                 $keyset = explode("/", $data);
@@ -190,23 +181,12 @@ $acquisition_note = plang("acquisition_note");
 $yes = plang('yes');
 $no = plang('no');
 
-
-// $url = 'http://account.geetest.com/api/discuz/get';
-// $token = md5('discuz'.(string)time());
-// $data = array(
-//         "captchaid" => "b051a07ebb9fb3b8c12486d71fc170b7",
-//         "privatekey" => "0dd7d757d13275df0ada9e0ab3137761",
-//         "token" => $token
-//     );
-// $res = send_post($url,$data);
-// echo $res;
     $post_data = array(
-            'captchaid'=>$_G['cache']['gt_cache']['captchaid'],
-            'privatekey'=>$_G['cache']['gt_cache']['privatekey'],
-            'token' => $token
+            'captchaid'=>$config['webset']['captchaid'],
+            'privatekey'=>$config['webset']['privatekey'],
+            'token' => md5('discuz'.(string)time())
         );
     $result = $geetestlib->send_post('http://account.geetest.com/api/discuz/get',$post_data);
-    // print_r($_G['cache']['gt_cache']);
 
     // $result = json_decode($result,true);
     if ($result == -1) {
@@ -226,7 +206,7 @@ $no = plang('no');
 HTML;
     echo $html;
     }elseif ($result == 0 ) {
-        $privatekey = md5($_G['cache']['gt_cache']['privatekey']);
+        $privatekey = md5($config['webset']['privatekey']);
         $html = <<<HTML
         <table class="tb tb2 ">
             <tbody>

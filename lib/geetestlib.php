@@ -11,11 +11,14 @@ define('GT_SDK_VERSION', 'discuz_1.0');
 class geetestlib{
 	public $keyset = array();
 	
-	public function __construct(){
+	public function __construct(&$config){
+		$this->keyset = $config;
 		$this->challenge = "";
-		$config = @include dirname(__FILE__) . '/config.php';
-		$this->keyset=isset($config['cache_keyset'])?$config['cache_keyset']:$config['keyset'];
 	}
+
+	// public static function get_widget_mobile($captcha){
+	// 	return '<script type="text/javascript" src="http://api.geetest.com/get.php?gt='.$captcha.'&product=embed&width=300" async></script>';
+	// }
 
 	function register() {
 		$url = "http://api.geetest.com/register.php?gt=" . $this->keyset['captchaid'];

@@ -5,10 +5,8 @@
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
-loadcache('gt_cache');
 include_once DISCUZ_ROOT."/source/plugin/geetest/lib/geetestlib.php";
-
-	$geetestlib = new geetestlib();
+$geetestlib = new geetestlib();
 if(submitcheck("feedback_submit")){
 	$config_url = "plugins&operation=$operation&do=$pluginid&identifier=geetest&pmod=feedback";
 	$url = "http://my.geetest.com/page_plugin/save_feedback/";
@@ -22,9 +20,9 @@ if(submitcheck("feedback_submit")){
 		$feedback_content = iconv("BIG5", "UTF-8", $feedback_content);
 	}
 	$post_data = array(
-			'feedback_content' => $feedback_content,
-			'from_url' => $from_url
-			);
+		'feedback_content' => $feedback_content,
+		'from_url' => $from_url
+		);
 
 	$response = $geetestlib->send_post($url,$post_data);
 	//print_r($response);

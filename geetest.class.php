@@ -4,6 +4,7 @@ if(!defined('IN_DISCUZ')) {
     exit('Access Denied');  
 }  
 loadcache('plugin');
+
 C::import('geetestlib','plugin/geetest/lib');
 
 class plugin_geetest{  
@@ -12,11 +13,12 @@ class plugin_geetest{
     public $config = array();
     public $open ;//验证是否开启
     public $geetest;
-	
+    
     function plugin_geetest() {
         $this->geetest=new geetestlib();
         global $_G;
         //读缓存信息
+        $this->config = @DISCUZ_ROOT.'/data/plugindata/geetest/config.php';
         $this->mods = unserialize($_G['cache']['plugin']['geetest']['mod']);
         $this->open = $_G['cache']['plugin']['geetest']['open']; 
 

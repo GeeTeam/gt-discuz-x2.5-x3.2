@@ -3,11 +3,11 @@
  * 使用Get的方式返回：challenge和capthca_id 此方式以实现前后端完全分离的开发模式 专门实现failback
  * @author Tanxu
  */
-error_reporting(0);
+// error_reporting(0);
 require_once dirname(__FILE__) . '/lib/geetestlib.php';
-$config = include @dirname(__FILE__) . '/lib/config.php';
-$keyset=isset($config['cache_keyset'])?$config['cache_keyset']:$config['keyset'];
-$GtSdk = new geetestLib();
+$config = include dirname(dirname(dirname(dirname(__FILE__)))).'/data/plugindata/geetest/config.php';
+$keyset=$config['webset'];
+$GtSdk = new geetestLib($keyset);
 session_start();
 $_SESSION['gtsdk'] = $GtSdk;
 $return = $GtSdk->register();

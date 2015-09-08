@@ -9,7 +9,6 @@ if(!defined('IN_DISCUZ')) {
     exit('Access Denied');
 }
 loadcache('plugin');
-loadcache('gt_mobile');
 C::import('geetestlib','plugin/geetest/lib');
 
 // include DISCUZ_ROOT.'source/plugin/geetest/template/extend_module.htm';
@@ -19,24 +18,14 @@ class mobileplugin_geetest {
     public $mod = array();
     public $captcha = '';
     public $private = '';
+    public $config =array();
     public function mobileplugin_geetest(){
         global $_G;
         //读缓存信息
+        $config = include DISCUZ_ROOT.'data/plugindata/geetest/config.php';
         $this->mod = unserialize($_G['cache']['plugin']['geetest']['mod']);
         $this->mobile = $_G['cache']['plugin']['geetest']['mobile']; 
-        if ($_G['cache']['gt_mobile'] == "" || $_G['cache']['gt_mobile'] == null || !isset($_G['cache']['gt_mobile'])) {
-            
-            $config = @include DISCUZ_ROOT.'source/plugin/geetest/lib/config.php';
-            $this->keyset = $config['mobile'];
-        }else{
-            $this->keyset = $_G['cache']['gt_mobile'];
-        }
-        // $this->captcha = $_G['cache']['gt_mobile']['captchaid'];
-        // $this->private = $_G['cache']['gt_mobile']['privatekey'];
-        // $this->keyset = array(
-        //         "captchaid" =>$this->captcha,
-        //         "privatekey" =>$this->private,
-        //     );
+        $this->keyset = $this->config['mobileset'];
         if(in_array($_G['groupid'], unserialize($_G['cache']['plugin']['geetest']['groupid'])) && $this->mobile ){
             $this->captcha_allow = true;
         }
@@ -115,8 +104,8 @@ class mobileplugin_geetest {
         }
     }
     public function geetest_validate($challenge, $validate, $seccode){
-        $geetest = new geetestlib();
-        $geetest->set_keyset($this->keyset);
+        $geetest = new geetestlib($this->keyset);
+        // $geetest->set_keyset($this->keyset);
         return $geetest->validate($challenge, $validate, $seccode);
     }
 

@@ -33,7 +33,7 @@
                                 state = false;
                                 $("#web_set2").css('display','inline'); 
                                 $("#web_set1").css('display','none'); 
-                                window.location.reload();
+                                window.location.href="admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
                                 
                             };
                             if (callback.success == "success") {
@@ -41,7 +41,7 @@
                                 state = true;
                                 $("#web_set1").css('display','inline'); 
                                 $("#web_set2").css('display','none'); 
-                                window.location.reload();
+                                window.location.href="admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
                             };
                         }
                         
