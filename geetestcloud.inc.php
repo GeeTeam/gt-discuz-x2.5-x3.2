@@ -141,7 +141,7 @@ if (!empty($_POST['web_keyset'])) {
     // print_r($result_ajax);
     if ($result_cache == 0 || $result_cache == 1) {
         $config['webset']=$gt_cache;
-        file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"."if(!defined('IN_DISCUZ')) exit('Access Denied');\n"." return ".var_export($config,true).";?>");
+        file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"." return ".var_export($config,true).";?>");
     }
 }
 if (!empty($_POST['web_keyset'])) {
@@ -155,7 +155,7 @@ if (!empty($_POST['web_keyset'])) {
         $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get",$post_data);
         if ($result_mobile == 0 || $result_mobile == 1) {
             $config['mobileset']=$gt_mobile;
-            file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"."if(!defined('IN_DISCUZ')) exit('Access Denied');\n"." return ".var_export($config,true).";?>");
+            file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"." return ".var_export($config,true).";?>");
         }
 }
         function check($data){
@@ -188,8 +188,8 @@ $no = plang('no');
         );
     $result = $geetestlib->send_post('http://account.geetest.com/api/discuz/get',$post_data);
 
-    // $result = json_decode($result,true);
-    if ($result == -1) {
+    $result = json_decode($result,true);
+    if ($result['res'] == -1) {
         $html = <<<HTML
         <table class="tb tb2 ">
             <tbody>
@@ -205,7 +205,7 @@ $no = plang('no');
         </table>
 HTML;
     echo $html;
-    }elseif ($result == 0 ) {
+    }elseif ($result['res'] == 0 ) {
         $privatekey = md5($config['webset']['privatekey']);
         $html = <<<HTML
         <table class="tb tb2 ">
@@ -231,9 +231,7 @@ HTML;
 HTML;
     echo $html;
         
-    }elseif ($result == 1) {
-        $money = $result['gmoney'];
-        $email = $result['email'];
+    }elseif ($result['res'] == 1) {
             $html = <<<HTML
     <table class="tb tb2 ">
         <tbody>
@@ -242,7 +240,7 @@ HTML;
             </th>
         </tr>
         <tr>
-            <td class="td27" s="1">$relevance:{$email}</td>
+            <td class="td27" s="1">$relevance:{$result['loginname']}</td>
         </tr>
         </tbody>
     </table>
