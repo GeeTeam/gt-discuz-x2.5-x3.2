@@ -45,22 +45,11 @@ class plugin_geetest_group  extends plugin_geetest{
                     }else{
                         $success = 1;
                     }
-                }else{
-                    $validate = $_POST['geetest_validate'];
-                    if ($validate) {
-                        $value = explode("_",$validate);
-                        $challenge = $_SESSION['challenge'];
-                        $ans = $this->geetest->decode_response($challenge,$value['0']);
-                        $bg_idx = $this->geetest->decode_response($challenge,$value['1']);
-                        $grp_idx = $this->geetest->decode_response($challenge,$value['2']);
-                        $x_pos = $this->geetest->get_failback_pic_ans($bg_idx ,$grp_idx);
-                        if (abs($ans - $x_pos) < 4) {
-                            $success=1;
-                        }else{
-                            showmessage( lang('plugin/geetest', 'seccode_expired') );
-                        }
-                    }else{
+                }else {
+                    if (!$this->geetest->get_answer($_POST['geetest_validate'])) {
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));
+                    }else {
+                        $success = 1;
                     }
                 }
             }

@@ -1,72 +1,80 @@
-<?php  
-
-if(!defined('IN_DISCUZ')) {  
-    exit('Access Denied');  
-}  
+<?php
+if (!defined('IN_DISCUZ')) {
+    exit('Access Denied');
+}
 loadcache('plugin');
 
-C::import('geetestlib','plugin/geetest/lib');
+C::import('geetestlib', 'plugin/geetest/lib');
 
-class plugin_geetest{  
-    public $captcha_allow = false;//当前模块是否开启验证码验证
-    public $mods = array();//需要开启验证的位置
+class plugin_geetest
+{
+    public $captcha_allow = false;
+    
+    //当前模块是否开启验证码验证
+    public $mods = array();
+    
+    //需要开启验证的位置
     public $config = array();
-    public $open ;//验证是否开启
+    public $open;
+    
     public $geetest;
     
     function plugin_geetest() {
-        $this->geetest=new geetestlib();
         global $_G;
         //读缓存信息
-        $this->config = @DISCUZ_ROOT.'/data/plugindata/geetest/config.php';
+        $this->config = include @DISCUZ_ROOT . '/data/plugindata/geetest/config.php';
         $this->mods = unserialize($_G['cache']['plugin']['geetest']['mod']);
-        $this->open = $_G['cache']['plugin']['geetest']['open']; 
-
+        $this->open = $_G['cache']['plugin']['geetest']['open'];
+        $this->geetest = new geetestlib($this->config['webset']);
+        
         //初始化
-        if(($this->open == '1')&&($this->_cur_mod_is_valid())){
+        if (($this->open == '1') && ($this->_cur_mod_is_valid())) {
+            
             //登陆注册不需要选择用户组
-            if(CURMODULE == "logging" || CURMODULE == "register"){
+            if (CURMODULE == "logging" || CURMODULE == "register") {
                 $this->captcha_allow = true;
-            }else if(in_array($_G['groupid'], unserialize($_G['cache']['plugin']['geetest']['groupid']))){
+            } 
+            else if (in_array($_G['groupid'], unserialize($_G['cache']['plugin']['geetest']['groupid']))) {
                 $this->captcha_allow = true;
-            }else{
+            } 
+            else {
                 $this->captcha_allow = false;
             }
-        }else{
+        } 
+        else {
             $this->captcha_allow = false;
         }
-	
+        
         //发帖大于限定数，则不用插件
         $post_count = $_G['cookie']['pc_size_c'];
         $post_num = intval($_G['cache']['plugin']['geetest']['post_num']);
-        if($post_count == null){
-            $arr = array('a','b','c','d','e','f');
+        if ($post_count == null) {
+            $arr = array('a', 'b', 'c', 'd', 'e', 'f');
             shuffle($arr);
-            $post_count = '0'.implode("",$arr);
-            dsetcookie('pc_size_c', $post_count, 24*60*60);
-        }else{
+            $post_count = '0' . implode("", $arr);
+            dsetcookie('pc_size_c', $post_count, 24 * 60 * 60);
+        } 
+        else {
             $post_count = intval($post_count);
         }
-        if($post_num != 0 && $post_count >= $post_num){
+        if ($post_num != 0 && $post_count >= $post_num) {
             $this->captcha_allow = false;
         }
     }
-          
-
+    
     //初始化get.php
-    function global_cpnav_top(){
+    function global_cpnav_top() {
         global $_G;
-        $javascript=<<<JS
+        $javascript = <<<JS
         <script type="text/javascript" src="source/plugin/geetest/js/gt_init.js"></script>
         <script type="text/javascript" src="source/plugin/geetest/js/gt_core.js"></script>
 JS;
         return $javascript;
-        //return $this->return_captcha("tpl_global_cpnav_top","module");
     }
-
+    
     function global_login_extra() {
         global $_G;
-        $html=<<<HTML
+        $html = <<<HTML
         <script type="text/javascript">
             var lsform = document.getElementById('lsform');
             var o = document.createElement("button");  
@@ -83,14 +91,13 @@ JS;
         </script>
 HTML;
         return $html;
-        //return $this->return_captcha("tpl_global_login_extra","module");
     }
     
-    function global_header(){
+    function global_header() {
         global $_G;
-        $cur=CURMODULE;
-        if($cur=="connect"){
-            $html=<<<HTML
+        $cur = CURMODULE;
+        if ($cur == "connect") {
+            $html = <<<HTML
             <div><table><tbody><tr><th style="width:80px;"><div></div></th><td id="global_header">
             </td></tr></tbody></table></div>
             <script type="text/javascript">
@@ -99,88 +106,98 @@ HTML;
             </script> 
 HTML;
             return $html;
-            //return $this->return_captcha("tpl_global_header","module");
         }
     }
-
-    public function _cur_mod_is_valid(){
+    
+    public function _cur_mod_is_valid() {
         $cur = CURMODULE;
-        switch(CURMODULE){
+        switch (CURMODULE) {
             case "logging":
                 $mod = "2";
                 break;
+
             case "register":
                 $mod = "1";
                 break;
+
             case "post":
-                if($_GET["action"] =="reply"){
+                if ($_GET["action"] == "reply") {
                     $mod = "4";
-                }else if($_GET["action"] =="newthread"){
+                } 
+                else if ($_GET["action"] == "newthread") {
                     $mod = "3";
-                }else if($_GET["action"] =="edit"){
+                } 
+                else if ($_GET["action"] == "edit") {
                     $mod = "5";
                 }
                 break;
-            case "forumdisplay":                
-                $mod = "3";             
+
+            case "forumdisplay":
+                $mod = "3";
                 break;
+
             case "viewthread":
                 $mod = "4";
                 break;
-            case "follow": 
+
+            case "follow":
                 $mod = "6";
                 break;
+
             case "spacecp":
-                if($_GET["ac"] =="blog"){
+                if ($_GET["ac"] == "blog") {
                     $mod = "7";
                 }
-                if($_GET["ac"] =="comment"){
+                if ($_GET["ac"] == "comment") {
                     $mod = "8";
                 }
-                if($_GET["ac"] =="follow"){
+                if ($_GET["ac"] == "follow") {
                     $mod = "6";
                 }
                 if ($_GET["ac"] == "credit") {
                     $mod = "9";
                 }
                 break;
+
             case "space":
-                if($_GET["do"] =="wall"){
+                if ($_GET["do"] == "wall") {
                     $mod = "8";
                 }
-                if($_GET["do"] == "blog" || $_GET["do"] == "index"){
+                if ($_GET["do"] == "blog" || $_GET["do"] == "index") {
                     $mod = "7";
-                }else{
+                } 
+                else {
                     $mod = "4";
                 }
                 break;
-            case "connect":         
-                $mod = "1";         
+
+            case "connect":
+                $mod = "1";
                 break;
+
             case "index":
                 $mod = "2";
                 break;
+
             default:
                 return 1;
+            }
+            return in_array($mod, $this->mods);
         }
-        return in_array($mod, $this->mods);
-    }
-
-    public function return_captcha($temp,$module){
-        if($this->captcha_allow){
-            include_once template('geetest:'.$module);
-            return call_user_func($temp); 
+        
+        public function return_captcha($temp, $module) {
+            if ($this->captcha_allow) {
+                include_once template('geetest:' . $module);
+                return call_user_func($temp);
+            }
         }
-    }
-
 }
 
-include('plugin_class/plugin_geetest_member.class.php');
+include ('plugin_class/plugin_geetest_member.class.php');
 
-include('plugin_class/plugin_geetest_forum.class.php');
+include ('plugin_class/plugin_geetest_forum.class.php');
 
-include('plugin_class/plugin_geetest_home.class.php');
+include ('plugin_class/plugin_geetest_home.class.php');
 
-include('plugin_class/plugin_geetest_group.class.php');
-
+include ('plugin_class/plugin_geetest_group.class.php');
 ?>
