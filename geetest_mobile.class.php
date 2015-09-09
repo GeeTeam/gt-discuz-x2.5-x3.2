@@ -40,8 +40,7 @@ class mobileplugin_geetest
             shuffle($arr);
             $post_count = '0' . explode($arr);
             dsetcookie('pc_size_c', $post_count, 24 * 60 * 60);
-        } 
-        else {
+        }else {
             $post_count = intval($post_count);
             $post_num = intval($_G['cache']['plugin']['geetest']['post_num']);
             
@@ -93,7 +92,7 @@ class mobileplugin_geetest
             <div class="gt_bg" style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;background-color: gray;opacity: 0.7;"></div><div class="wrap" style="width: 300px;margin: 10px auto;text-align: center;background-color: #fff;z-index: 2;position: relative;
 "><div class="top" style="padding: 0 8px;height: 44px;z-index: 1;position: relative;text-align: center;font-weight: 500;"><a class="exit" id="close" href="javascript:;"></a><div class="title" style=" line-height: 45px;width: 200px;margin: 0 auto;">&#35831;&#36890;&#36807;&#39564;&#35777;
         </div></div>';
-            $output.= $this->geetes->get_widget_mobile($this->keyset['captchaid']);
+            $output.= $this->geetest->get_widget_mobile($this->keyset['captchaid']);
             $output.= '</div>';
             return $output;
         }
@@ -141,8 +140,7 @@ class mobileplugin_geetest_member extends mobileplugin_geetest
                 if ($response != 1) {
                     if ($response == - 1) {
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));
-                    } 
-                    else if ($response == 0) {
+                    }else if ($response == 0) {
                         showmessage(lang('plugin/geetest', 'seccode_expired'));
                     }
                 }
