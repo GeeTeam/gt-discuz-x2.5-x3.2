@@ -117,8 +117,7 @@ class geetestlib
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
             $data = curl_exec($ch);
             curl_close($ch);
-        } 
-        else {
+        }else {
             $opts = array('http' => array('method' => "GET", 'timeout' => 2,));
             $context = stream_context_create($opts);
             $data = file_get_contents($url, false, $context);

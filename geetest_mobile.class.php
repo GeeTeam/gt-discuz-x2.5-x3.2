@@ -25,7 +25,8 @@ class mobileplugin_geetest
         global $_G;
         
         //读缓存信息
-        $config = include DISCUZ_ROOT . 'data/plugindata/geetest/config.php';
+
+        $this->config = include @DISCUZ_ROOT . '/data/plugindata/geetest/config.php';
         $this->mod = unserialize($_G['cache']['plugin']['geetest']['mod']);
         $this->mobile = $_G['cache']['plugin']['geetest']['mobile'];
         $this->keyset = $this->config['mobileset'];
@@ -136,7 +137,7 @@ class mobileplugin_geetest_member extends mobileplugin_geetest
         if ($this->_cur_mod_is_valid() && $this->captcha_allow) {
             if (submitcheck('loginsubmit', 1, $seccodestatus) && empty($_GET['lssubmit'])) {
                 
-                $response = $this->geetest->geetest_validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
+                $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
                 if ($response != 1) {
                     if ($response == - 1) {
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));
@@ -151,7 +152,7 @@ class mobileplugin_geetest_member extends mobileplugin_geetest
         global $_G;
         if ($this->_cur_mod_is_valid() && $this->captcha_allow) {
             if (submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck)) {
-                $response = $this->geetest->geetest_validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
+                $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
                 if ($response != 1) {
                     if ($response == - 1) {
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));
@@ -202,7 +203,7 @@ class mobileplugin_geetest_forum extends mobileplugin_geetest
         $success = 0;
         if ($this->_cur_mod_is_valid() && $this->captcha_allow) {
             if (submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('editsubmit', 0, $seccodecheck, $secqaacheck)) {
-                $response = $this->geetest->geetest_validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
+                $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
                 if ($response != 1) {
                     if ($response == - 1) {
                         showmessage(lang('plugin/geetest', 'seccode_invalid'));

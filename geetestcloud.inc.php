@@ -1,12 +1,12 @@
-<?php 
-if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
+<?php
+if (!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
     exit('Access Denied');
 }
 loadcache('plugin');
-require_once DISCUZ_ROOT.'source/plugin/geetest/lib/geetestlib.php';
+require_once DISCUZ_ROOT . 'source/plugin/geetest/lib/geetestlib.php';
 $geetestlib = new geetestlib();
 
-$config = include DISCUZ_ROOT.'data/plugindata/geetest/config.php';
+$config = include DISCUZ_ROOT . 'data/plugindata/geetest/config.php';
 $web_id_key = plang("web_id_key");
 $mobile_id_key = plang("mobile_id_key");
 $web_captcha = plang("web_captcha");
@@ -16,7 +16,7 @@ $mobile_private = plang("mobile_private");
 
 $relevance_geetest_account = plang("relevance_geetest_account");
 $id_note = plang("id_note");
-$key_note =plang("key_note");
+$key_note = plang("key_note");
 $web_button_note = plang("web_button_note");
 $mobile_button_note = plang("mobile_button_note");
 $modify_id_key = plang("modify_id_key");
@@ -130,46 +130,36 @@ echo $html;
 if (!empty($_POST['web_keyset'])) {
     $web_keyset = $_POST['web_keyset'];
     $gt_cache = check($web_keyset);
-    $token = md5('discuz'.(string)time());
-    $post_data = array(
-            'captchaid'=>$gt_cache['captchaid'],
-            'privatekey'=>$gt_cache['privatekey'],
-            'token' => $token
-    );
-    $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get",$post_data);
-
+    $token = md5('discuz' . (string)time());
+    $post_data = array('captchaid' => $gt_cache['captchaid'], 'privatekey' => $gt_cache['privatekey'], 'token' => $token);
+    $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
+    
     // print_r($result_ajax);
     if ($result_cache == 0 || $result_cache == 1) {
-        $config['webset']=$gt_cache;
-        file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"." return ".var_export($config,true).";?>");
+        $config['webset'] = $gt_cache;
+        file_put_contents(DISCUZ_ROOT . '/data/plugindata/geetest/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
     }
 }
-if (!empty($_POST['web_keyset'])) {
-        $mobile_keyset = $_POST['mobile_keyset'];
-        $gt_mobile = check($mobile_keyset);
-        $post_data = array(
-            'captchaid'=>$gt_mobile['captchaid'],
-            'privatekey'=>$gt_mobile['privatekey'],
-            'token' => $token
-        );
-        $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get",$post_data);
-        if ($result_mobile == 0 || $result_mobile == 1) {
-            $config['mobileset']=$gt_mobile;
-            file_put_contents(DISCUZ_ROOT.'/data/plugindata/geetest/config.php', "<?php\n"." return ".var_export($config,true).";?>");
-        }
+if (!empty($_POST['mobile_keyset'])) {
+    $mobile_keyset = $_POST['mobile_keyset'];
+    $gt_mobile = check($mobile_keyset);
+    $token = md5('discuz' . (string)time());
+    $post_data = array('captchaid' => $gt_mobile['captchaid'], 'privatekey' => $gt_mobile['privatekey'], 'token' => $token);
+    $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
+    if ($result_mobile == 0 || $result_mobile == 1) {
+        $config['mobileset'] = $gt_mobile;
+        file_put_contents(DISCUZ_ROOT . '/data/plugindata/geetest/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
+    }
 }
-        function check($data){
-            if ($data != "" || $data != null ) {
-                $keyset = explode("/", $data);
-                $keyset['0'] = trim($keyset['0']);
-                $keyset['1'] = trim($keyset['1']);
-                $geetest_key = array(
-                        'captchaid'=>$keyset['0'],
-                        'privatekey'=>$keyset['1'],
-                    );
-                return $geetest_key;
-            }
-        }
+function check($data) {
+    if ($data != "" || $data != null) {
+        $keyset = explode("/", $data);
+        $keyset['0'] = trim($keyset['0']);
+        $keyset['1'] = trim($keyset['1']);
+        $geetest_key = array('captchaid' => $keyset['0'], 'privatekey' => $keyset['1'],);
+        return $geetest_key;
+    }
+}
 
 $geetest_account = plang("geetest_account");
 $id_and_key_error = plang("id_and_key_error");
@@ -181,16 +171,12 @@ $acquisition_note = plang("acquisition_note");
 $yes = plang('yes');
 $no = plang('no');
 
-    $post_data = array(
-            'captchaid'=>$config['webset']['captchaid'],
-            'privatekey'=>$config['webset']['privatekey'],
-            'token' => md5('discuz'.(string)time())
-        );
-    $result = $geetestlib->send_post('http://account.geetest.com/api/discuz/get',$post_data);
+$post_data = array('captchaid' => $config['webset']['captchaid'], 'privatekey' => $config['webset']['privatekey'], 'token' => md5('discuz' . (string)time()));
+$result = $geetestlib->send_post('http://account.geetest.com/api/discuz/get', $post_data);
 
-    $result = json_decode($result,true);
-    if ($result['res'] == -1) {
-        $html = <<<HTML
+$result = json_decode($result, true);
+if ($result['res'] == - 1) {
+    $html = <<<HTML
         <table class="tb tb2 ">
             <tbody>
             <tr>
@@ -205,9 +191,10 @@ $no = plang('no');
         </table>
 HTML;
     echo $html;
-    }elseif ($result['res'] == 0 ) {
-        $privatekey = md5($config['webset']['privatekey']);
-        $html = <<<HTML
+} 
+elseif ($result['res'] == 0) {
+    $privatekey = md5($config['webset']['privatekey']);
+    $html = <<<HTML
         <table class="tb tb2 ">
             <tbody>
             <tr>
@@ -220,7 +207,7 @@ HTML;
             <tr>
                 <td>
                     <div class = "rele" style="width:65px;"><a style="  color: white;text-decoration: none;" target="view_window" href="http://account.geetest.com/discuz/{$_G['cache']['gt_cache']['captchaid']}/{$privatekey}">
-                	$relevance_geetest_account
+                    $relevance_geetest_account
                 </a>
                     </div>
                 </td>
@@ -230,9 +217,9 @@ HTML;
         </table>
 HTML;
     echo $html;
-        
-    }elseif ($result['res'] == 1) {
-            $html = <<<HTML
+} 
+elseif ($result['res'] == 1) {
+    $html = <<<HTML
     <table class="tb tb2 ">
         <tbody>
         <tr>
@@ -257,14 +244,9 @@ HTML;
     </table>
 HTML;
     echo $html;
-    
-    }   
-
-
+}
 
 function plang($str) {
     return lang('plugin/geetest', $str);
 }
-
-
- ?>
+?>
