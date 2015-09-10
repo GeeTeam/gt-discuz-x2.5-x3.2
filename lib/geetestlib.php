@@ -18,7 +18,7 @@ class geetestlib
         $this->challenge = "";
     }
     
-    public static function get_widget_mobile($captcha) {
+    public function get_widget_mobile($captcha) {
         return '<script type="text/javascript" src="http://api.geetest.com/get.php?gt=' . $captcha . '&product=embed&width=300" async></script>';
     }
     
