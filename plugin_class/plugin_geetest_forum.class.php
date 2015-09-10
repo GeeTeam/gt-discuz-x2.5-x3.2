@@ -29,7 +29,12 @@ class plugin_geetest_forum extends plugin_geetest {
     //快速回复(默认板块)
     function forumdisplay_postbutton_top(){
         global $_G;
-        return $this->return_captcha("tpl_forumdisplay_postbutton_top","forum");
+        include_once(DISCUZ_ROOT.'/source/discuz_version.php');
+        if(DISCUZ_VERSION == "X2.5" && $_GET['handlekey'] == "vfastpost"){
+            return $this->return_captcha("tpl_forumdisplay_postbutton_top","forum");
+        }else{
+            return false ;
+        }
     }
     //快速回复
     function viewthread_modaction(){
