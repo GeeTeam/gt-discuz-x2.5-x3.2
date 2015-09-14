@@ -29,17 +29,12 @@ class plugin_geetest_forum extends plugin_geetest {
     //直播贴回复
     function forumdisplay_postbutton_top(){
         global $_G;
-        if ($_GET['handlekey'] == "livereplypost") {
-            return $this->return_captcha("tpl_forumdisplay_postbutton_top","forum");
-        }else{
-            return false;
-        }
+        return $this->return_captcha("tpl_forumdisplay_postbutton_top","forum");
     }
     //快速回复
     function viewthread_modaction(){
         global $_G;
-        include_once(DISCUZ_ROOT.'/source/discuz_version.php');
-        if(DISCUZ_VERSION == "X2.5" && $_GET['handlekey'] == "vfastpost"){
+        if($_G['setting']['allowfastreply'] == 1){
             return $this->return_captcha("tpl_viewthread_modaction","forum");
         }else{
             return false ;

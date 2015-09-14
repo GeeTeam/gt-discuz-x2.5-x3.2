@@ -24,8 +24,25 @@ global $_G;
         <td id="viewthread_fastpost_btn_extra">
         </td></tr></tbody></table></div>
         <script type="text/javascript">
-            getCaptcha("#viewthread_fastpost_btn_extra","float");
+            getCaptcha("#viewthread_fastpost_btn_extra","float", false, function (captcha) {
+                var success;
+                captcha.onSuccess(function () {
+                    success = true;
+                });
+                captcha.onRefresh(function () {
+                    success = false;
+                });
+                document.getElementById('fastpostsubmit').addEventListener('click', function () {
+                    setTimeout(function () {
+                        if (success) {
+                            captcha.refresh();
+                            success = false;
+                        }
+                    }, 500);
+                });
+            });
             changeCaptcha();
+            // captcha.refresh();
         </script>
         <!--{/block}-->
         <!--{eval return $return;}-->
@@ -54,6 +71,7 @@ global $_G;
                 <th style="width:80px;"><div>*{lang geetest:move_to_captcha}:</div></th>
                 <td id="post_middle">
                     <script type="text/javascript">
+                    console.log('ll');
                         getCaptcha("#post_middle","float");
                     </script>
                 </td></tr></tbody></table></div>
@@ -68,11 +86,13 @@ global $_G;
                 <div id="reply_captcha"><table><tbody><tr><th style="width:80px;"><div></div></th><td id="quick_response">
             </td></tr></tbody></table></div>
             <script type="text/javascript">
-                getCaptcha("#quick_response","popup","#livereplysubmit");
-                var captcha=document.getElementById("reply_captcha");
-                var p=document.getElementsByClassName("ptm pnpost");
-                var parent=p[0].parentNode;
-                parent.insertBefore(captcha,p[0]);
+                if (document.getElementById('livethread')) {
+                    getCaptcha("#quick_response","popup","#livereplysubmit");
+                    var captcha=document.getElementById("reply_captcha");
+                    var p=document.getElementsByClassName("ptm pnpost");
+                    var parent=p[0].parentNode;
+                    parent.insertBefore(captcha,p[0]);
+                }
             </script>
             <!--{/block}-->
             <!--{eval return $return;}-->
@@ -92,7 +112,7 @@ global $_G;
             var parent=td.parentNode;
             parent.insertBefore(captcha,td);
             }
-            _attachEvent(window, 'load', move_captcha_toform);
+                _attachEvent(window, 'load', move_captcha_toform);
         </script>
         <!--{/block}-->
         <!--{eval return $return;}-->

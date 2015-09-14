@@ -23,7 +23,23 @@ global $_G;
         <script type="text/javascript">
             var cts=document.getElementById("ct").childNodes;
             cts[1].className="mn_overflow";
-            getCaptcha("#follow_top","float");
+            getCaptcha("#follow_top","float",false, function (captcha) {
+                        var success;
+                        captcha.onSuccess(function () {
+                            success = true;
+                        });
+                        captcha.onRefresh(function () {
+                            success = false;
+                        });
+                        document.getElementById('fastpostsubmit').addEventListener('click', function () {
+                            setTimeout(function () {
+                                if (success) {
+                                    captcha.refresh();
+                                    success = false;
+                                }
+                            }, 500);
+                        });
+                    });
             function move_fast_geetest_before_submit() {
                 var fastpostform = document.getElementById('fastpostform');
                 var geetest = document.getElementById('captcha');
@@ -57,7 +73,23 @@ global $_G;
         <th style="width:80px;"><div>*{lang geetest:move_to_captcha}:</div></th>
         <td id="space_blog_face_extra">
             <script type="text/javascript">
-                getCaptcha("#space_blog_face_extra","float");
+                getCaptcha("#space_blog_face_extra","float", false, function (captcha) {
+                var success;
+                captcha.onSuccess(function () {
+                    success = true;
+                });
+                captcha.onRefresh(function () {
+                    success = false;
+                });
+                document.getElementById('commentsubmit_btn').addEventListener('click', function () {
+                    setTimeout(function () {
+                        if (success) {
+                            captcha.refresh();
+                            success = false;
+                        }
+                    }, 500);
+                });
+            });
             </script>
         </td></tr></tbody></table></div>
         <!--{/block}-->
@@ -74,7 +106,23 @@ global $_G;
                 <script type="text/javascript">
                     var cts=document.getElementById("ct").childNodes;
                     cts[1].className="mn_overflow";
-                    getCaptcha("#space_wall_face_extra","float");
+                    getCaptcha("#space_wall_face_extra","float",false, function (captcha) {
+                        var success;
+                        captcha.onSuccess(function () {
+                            success = true;
+                        });
+                        captcha.onRefresh(function () {
+                            success = false;
+                        });
+                        document.getElementById('commentsubmit_btn').addEventListener('click', function () {
+                            setTimeout(function () {
+                                if (success) {
+                                    captcha.refresh();
+                                    success = false;
+                                }
+                            }, 500);
+                        });
+                    });
                 </script>
             </td></tr></tbody></table></div>
             <!--{/block}-->

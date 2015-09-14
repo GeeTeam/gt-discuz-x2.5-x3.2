@@ -1,4 +1,4 @@
-var getCaptcha = function(data_ele, data_style, data_btn) {
+var getCaptcha = function(data_ele, data_style, data_btn, callback) {
     var xmlHttp;
 
     function createxmlHttpRequest() {
@@ -38,15 +38,7 @@ var getCaptcha = function(data_ele, data_style, data_btn) {
             }, 1000);
         }
     };
-    // $.ajax({
-    //         url : "./plugin/geetest/gt_check_server.php?rand="+Math.round(Math.random()*100),
-    //         type : "get",
-    //         dataType : 'JSON',
-    //         success : function(result) {
-    //             console.log(result);
-    //             gtcallback(result)
-    //         }
-    //     })
+
     var loadGeetest = function(config) {
         //1. use geetest capthca
         var gt_captcha_obj = new window.Geetest({
@@ -60,6 +52,9 @@ var getCaptcha = function(data_ele, data_style, data_btn) {
         } else {
             gt_captcha_obj.appendTo(data_ele);
         }
+        if (callback) {
+            callback(gt_captcha_obj);
+        };
     }
     var gtFailbackFrontInitial = function(result) {
         var gt_failback = document.createElement('script');
