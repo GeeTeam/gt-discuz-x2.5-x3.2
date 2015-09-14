@@ -26,20 +26,24 @@ class plugin_geetest_forum extends plugin_geetest {
         global $_G;
         return $this->return_captcha("tpl_post_middle","forum");
     }
-    //快速回复(默认板块)
+    //直播贴回复
     function forumdisplay_postbutton_top(){
         global $_G;
-        include_once(DISCUZ_ROOT.'/source/discuz_version.php');
-        if(DISCUZ_VERSION == "X2.5" && $_GET['handlekey'] == "vfastpost"){
+        if ($_GET['handlekey'] == "livereplypost") {
             return $this->return_captcha("tpl_forumdisplay_postbutton_top","forum");
         }else{
-            return false ;
+            return false;
         }
     }
     //快速回复
     function viewthread_modaction(){
         global $_G;
-        return $this->return_captcha("tpl_viewthread_modaction","forum");
+        include_once(DISCUZ_ROOT.'/source/discuz_version.php');
+        if(DISCUZ_VERSION == "X2.5" && $_GET['handlekey'] == "vfastpost"){
+            return $this->return_captcha("tpl_viewthread_modaction","forum");
+        }else{
+            return false ;
+        }
     }
 	
     //处理发帖/恢复/编辑验证
