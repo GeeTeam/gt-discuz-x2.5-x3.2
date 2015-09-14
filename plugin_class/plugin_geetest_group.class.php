@@ -1,172 +1,29 @@
 <?php 
-
 class plugin_geetest_group  extends plugin_geetest{  
     
     function post_middle(){
-        $cur_mod = 'newthread';
-        $page_type = 'newthread_reply_grade';
-        $gt_geetest_id = 'gt_post_middle';
-        return $this->_code_output($cur_mod ,$gt_geetest_id, $page_type).$this->fix_post_middle();
-    }
-
-    function fix_post_middle(){
-        $output = <<<JS
-    <script type="text/javascript">
-
-        function js_fix_post_middle() {
-            var postsubmit = document.getElementById('postsubmit');
-            gt_tx.style.color = "red";
-            postsubmit.disabled = true;
-            var geetest_passed = false;
-            window.gt_custom_ajax = function(result) {
-                geetest_passed = result;
-                var gt_tx = document.getElementById("gt_tx");
-                if(geetest_passed == true){
-                    postsubmit.disabled = false;
-                    gt_tx.style.color = "black";                    
-                }else{
-                    postsubmit.disabled = true;
-                    gt_tx.style.color = "red";                  
-                }
-            }
-        }
-        _attachEvent(window, 'load', js_fix_post_middle);
-
-    </script>
-JS;
-        return $output;
+        global $_G;
+        return $this->return_captcha("tpl_post_middle","forum");
     }
 
 
     function post_infloat_middle() { 
-        $cur_mod = 'newthread';
-        $page_type = 'newthread_reply_float';
-        $gt_geetest_id = 'gt_post_infloat_middle';
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+        global $_G;
+        return $this->return_captcha("tpl_post_infloat_middle","forum");
     }
 
-    function viewthread_fastpost_content () {
-        $cur_mod = 'reply';
-        $page_type = 'reply';
-        $gt_geetest_id = 'gt_viewthread_fastpost_content';
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fastpost_btn_extra_pos($gt_geetest_id);
-    }
-
-    function _fix_fastpost_btn_extra_pos($gt_geetest_id) {
-        $output = <<<JS
-    <script type="text/javascript">
-        function move_geetest_before_submit() {
-            var gt_submitBtn = $('fastpostsubmit');
-            var geetest = $('$gt_geetest_id');
-            gt_submitBtn.parentNode.insertBefore(geetest, gt_submitBtn);
-            //_attachEvent(gt_submitBtn, 'click', GeeTestWidget.call_refresh);
-        }
-        _attachEvent(window, 'load', move_geetest_before_submit);
-
-        function get_button(){
-            var b = [];
-            var buttons = document.getElementsByTagName("button")
-            for(var i=0; i<buttons.length; i++){
-                var button = buttons[i];
-                if(button.type == "submit"){
-                    b.push(button)
-                }
-            }   
-            return b;           
-        }
-
-        window.gt_custom_ajax = function (status, $) {
-            function refresh(){
-                console.log("click");
-                setTimeout(function(){
-                    $(".gt_refresh_button").click();
-                },1000);
-            }
-            if(status) {
-              var buttons = get_button();
-              for(var i in buttons){
-                _attachEvent(buttons[i], 'click', refresh);
-              }
-              
-            }
-         }
-     </script>
-JS;
-        return $output;
-    }
-
-    //修复快速回复，包含到form表单中
-    function _fix_fast_reply_pos($gt_geetest_id){
-         $output = <<<JS
-    <script type="text/javascript">
-        function move_fast_geetest_before_submit() {
-            var vfastposttb = $('vfastposttb');
-            var geetest = $('$gt_geetest_id');
-            vfastposttb.parentNode.insertBefore(geetest, vfastposttb);
-
-            geetest.style.backgroundColor="white";
-            geetest.style.marginTop="-20px";
-            geetest.style.marginLeft="-3px";
-            geetest.style.marginRight="-3px";
-            geetest.style.marginBottom="3px";
-                
-            $('vfastpost').style.marginTop = "60px";    
-        }
-        _attachEvent(window, 'load', move_fast_geetest_before_submit);
-
-    </script>
-JS;
-        return $output;
-    }
-
-    function _fix_zhibo_reply($gt_geetest_id) {
-        $output = <<<JS
-    <script type="text/javascript">
-        function move_fast_geetest_before_submit() {
-            var livereplysubmit = $('livereplysubmit');
-            var geetest = $('$gt_geetest_id');
-            livereplysubmit.parentNode.insertBefore(geetest, livereplysubmit);
-        }
-        _attachEvent(window, 'load', move_fast_geetest_before_submit);
-    </script>
-JS;
-        return $output;
-    }
-
-    //直播贴回复
-    function forumdisplay_postbutton_top(){
-        $cur_mod = 'popup';
-        $btn_id = "livereplysubmit";
-        $gt_geetest_id = 'gt_forumdisplay_postbutton_top';
-        return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_zhibo_reply($gt_geetest_id);
-    }
-    
     //页面底部发帖
     function forumdisplay_fastpost_btn_extra() {
-        $cur_mod = 'newthread';
-        $page_type = 'newthread';
-        $gt_geetest_id = 'gt_forumdisplay_fastpost_btn_extra';
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fastpost_btn_extra_pos($gt_geetest_id);
-    }
-
-    //快速回复
-    function viewthread_modaction(){
-        //2.5版本不存在快速回复
-        include_once(DISCUZ_ROOT.'/source/discuz_version.php');
-        //其他版本
         global $_G;
-        
-        $allowfastreply = $_G['setting']['allowfastreply'] && $_G['group']['allowpost'];
-        //快速回复是否开启,并且有发帖权限
-        if(DISCUZ_VERSION != "X2.5" && $allowfastreply == 1){
-            $cur_mod = 'reply';
-            $gt_geetest_id = 'gt_viewthread_modaction';
-            return $this->_code_output($cur_mod, $gt_geetest_id).$this->_fix_fast_reply_pos($gt_geetest_id);
-        }
-
+        return $this->return_captcha("tpl_forumdisplay_fastpost_btn_extra","forum");
     }
 
-    
+    //页面底部回复
+    function viewthread_fastpost_btn_extra() {
+        global $_G;
+        return $this->return_captcha("tpl_viewthread_fastpost_btn_extra","forum");
+    }
+
     //处理发帖/恢复/编辑验证
     function post_recode() {
         global $_G;
@@ -174,18 +31,26 @@ JS;
             return;
         }
         $success = 0;
-        
-        if($this->_cur_mod_is_valid() && $this->captcha_allow) {
+        session_start();
+        if($this->captcha_allow) {
             if(submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('editsubmit', 0, $seccodecheck, $secqaacheck) ) {
-                $response = $this->geetest_validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
-                if($response != 1){//
-                    if($response == -1){
-                        showmessage(lang('plugin/geetest', 'seccode_invalid'));
-                    }else if($response == 0){
-                        showmessage( lang('plugin/geetest', 'seccode_expired') );
+                if($_SESSION['gtserver'] ==1){
+                    $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
+                    if($response != 1){
+                        if($response == -1){
+                            showmessage(lang('plugin/geetest', 'seccode_expired'));
+                        }else if($response == 0){
+                            showmessage( lang('plugin/geetest', 'seccode_invalid') );
+                        }
+                    }else{
+                        $success = 1;
                     }
-                }else{
-                    $success = 1;
+                }else {
+                    if (!$this->geetest->get_answer($_POST['geetest_validate'])) {
+                        showmessage(lang('plugin/geetest', 'seccode_invalid'));
+                    }else {
+                        $success = 1;
+                    }
                 }
             }
         }

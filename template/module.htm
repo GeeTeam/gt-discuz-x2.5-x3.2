@@ -1,0 +1,55 @@
+{eval
+function tpl_global_cpnav_top() {
+global $_G;
+}
+<!--{block return}-->
+    <script type="text/javascript" src="source/plugin/geetest/js/gt_init.js"></script>
+        <script type="text/javascript" src="source/plugin/geetest/js/gt_core.js"></script>
+        
+        
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_global_login_extra() {
+global $_G;
+}
+<!--{block return}-->
+    <script type="text/javascript">
+        var lsform = document.getElementById('lsform');
+        var o = document.createElement("button");  
+        o.id = "header-loggin-btn";       
+        o.setAttribute('type', 'submit');                               
+        o.value = ""; 
+        o.style.display="none";
+        lsform.appendChild(o);
+    </script>
+   <div ><table><tbody><tr><th style="width:80px;"><div></div></th><td id="index_login">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#index_login","popup","#header-loggin-btn");
+</script>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_global_header() {
+global $_G;
+}
+<!--{block return}-->
+<div><table><tbody><tr><th style="width:80px;"><div></div></th><td id="global_header">
+</td></tr></tbody></table></div>
+<script type="text/javascript">
+    getCaptcha("#global_header","popup","#registerformsubmit");
+    getCaptcha("#global_header","popup","button[name='loginsubmit']");
+</script>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+}
+
+

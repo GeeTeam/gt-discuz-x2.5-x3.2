@@ -22,27 +22,31 @@
                     $.ajax({
                         type:'GET',
                         async:false,
-                        url:'http://my.geetest.com/api/discuz/value',
+                        url:'http://account.geetest.com/api/discuz/value',
                         dataType:'jsonp',
                         data:{"captchaid":$("#web_captcha").val(),"privatekey":$("#web_private").val()},
                         jsonp:"callback",
                        
                         success:function(callback){
+                            console.log(callback.mobile);
                             if (callback.success == "fail") {
                                 alert(callback.success);
                                 state = false;
                                 $("#web_set2").css('display','inline'); 
                                 $("#web_set1").css('display','none'); 
-                                window.location.reload();
+                                window.location.href="admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
                                 
-                            };
-                            if (callback.success == "success") {
+                            }else if (callback.success == "success" && callback.mobile == 0) {
                                 alert(callback.success);
                                 state = true;
                                 $("#web_set1").css('display','inline'); 
                                 $("#web_set2").css('display','none'); 
-                                window.location.reload();
-                            };
+                                window.location.href="admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
+                            }else if(callback.success == "success" && callback.mobile == 1){
+                                alert('id type error');
+                                state = false;
+                                window.location.href = "admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
+                            }
                         }
                         
                     });
