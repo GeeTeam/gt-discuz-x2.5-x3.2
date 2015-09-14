@@ -14,7 +14,8 @@ var getCaptcha = function(data_ele, data_style, data_btn) {
     xmlHttp.send(null);
     xmlHttp.onreadystatechange = function(result) {
         if ((xmlHttp.readyState == 4) && (xmlHttp.status == 200)) {
-            var obj = eval('(' + result.target.response + ')');
+                var obj = JSON.parse(xmlHttp.responseText);
+             // var obj = eval('(' + result.target.response + ')');
             // console.log(obj);
             // if (obj.success == 1) {
             //     loadGeetest(obj);

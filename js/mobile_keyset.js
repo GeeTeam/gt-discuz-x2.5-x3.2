@@ -32,14 +32,17 @@
                                 $("#mobile_set2").attr("style", "display:inline");
                                 $("#mobile_set1").attr("style", "display:none");
                                 window.location.href = "admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
-                            };
-                            if (callback.success == "success") {
+                            }else if (callback.success == "success" && callback.mobile == 1) {
                                 alert(callback.success);
                                 state = true;
                                 $("#mobile_set1").attr("style", "display:inline");
                                 $("#mobile_set2").attr("style", "display:none");
                                 window.location.href = "admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
-                           };
+                           }else if (callback.success == "success" && callback.mobile == 0) {
+                                alert('id type error');
+                                state = false;
+                                window.location.href = "admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
+                           }
                         }
                     });
                 };

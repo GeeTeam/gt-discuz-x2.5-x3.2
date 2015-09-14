@@ -133,9 +133,9 @@ if (!empty($_POST['web_keyset'])) {
     $token = md5('discuz' . (string)time());
     $post_data = array('captchaid' => $gt_cache['captchaid'], 'privatekey' => $gt_cache['privatekey'], 'token' => $token);
     $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
-    
-    // print_r($result_ajax);
-    if ($result_cache == 0 || $result_cache == 1) {
+    $result1 = json_decode($result_cache, true);
+    file_put_contents("/home/tanxu/www/post.txt", print_r($result,true),FILE_APPEND);
+    if (($result1['res'] == 0 || $result1['res'] == 1) && $result1['mobile'] == 0) {
         $config['webset'] = $gt_cache;
         file_put_contents(DISCUZ_ROOT . '/data/plugindata/geetest/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
     }
@@ -146,7 +146,8 @@ if (!empty($_POST['mobile_keyset'])) {
     $token = md5('discuz' . (string)time());
     $post_data = array('captchaid' => $gt_mobile['captchaid'], 'privatekey' => $gt_mobile['privatekey'], 'token' => $token);
     $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
-    if ($result_mobile == 0 || $result_mobile == 1) {
+    $result2 = json_decode($result_mobile,true);
+    if (($result2['res'] == 0 || $result2['res'] == 1) && $result2['mobile'] == 1) {
         $config['mobileset'] = $gt_mobile;
         file_put_contents(DISCUZ_ROOT . '/data/plugindata/geetest/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
     }
