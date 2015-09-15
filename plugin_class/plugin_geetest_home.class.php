@@ -51,7 +51,7 @@ class plugin_geetest_home extends plugin_geetest
         $success = 0;
         session_start();
         if ($this->captcha_allow) {
-            if (submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('blogsubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('commentsubmit', 0, $seccodecheck, $secqaacheck)) {
+            if (submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('blogsubmit', 0, $seccodecheck, $secqaacheck) ) {
                 if ($_SESSION['gtserver'] == 1) {
                     $response = $this->geetest->validate($_GET['geetest_challenge'], $_GET['geetest_validate'], $_GET['geetest_seccode']);
                     if ($response != 1) {

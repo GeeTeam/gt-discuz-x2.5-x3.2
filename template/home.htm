@@ -7,7 +7,7 @@ global $_G;
     <td id="spacecp_credit_bottom">
     </td></tr></tbody></table></div>
     <script type="text/javascript">
-        getCaptcha("#spacecp_credit_bottom","popup","#transfersubmit_btn");
+        getCaptcha("#spacecp_credit_bottom","popup","#addfundssubmit_btn");
     </script>
     <!--{/block}-->
     <!--{eval return $return;}-->
@@ -70,26 +70,10 @@ global $_G;
     }
     <!--{block return}-->
     <div style="margin-top: 10px;margin-bottom: 10px;"><table><tbody><tr>
-        <th style="width:80px;"><div>*{lang geetest:move_to_captcha}:</div></th>
+        <th style="width:80px;"><div></div></th>
         <td id="space_blog_face_extra">
             <script type="text/javascript">
-                getCaptcha("#space_blog_face_extra","float", false, function (captcha) {
-                var success;
-                captcha.onSuccess(function () {
-                    success = true;
-                });
-                captcha.onRefresh(function () {
-                    success = false;
-                });
-                document.getElementById('commentsubmit_btn').addEventListener('click', function () {
-                    setTimeout(function () {
-                        if (success) {
-                            captcha.refresh();
-                            success = false;
-                        }
-                    }, 500);
-                });
-            });
+                getCaptcha("#space_blog_face_extra","popup", "#commentsubmit_btn");
             </script>
         </td></tr></tbody></table></div>
         <!--{/block}-->
@@ -101,28 +85,10 @@ global $_G;
         }
         <!--{block return}-->
         <div style="margin-top: 10px;margin-bottom: 10px;"><table><tbody><tr>
-            <th style="width:80px;"><div>*{lang geetest:move_to_captcha}:</div></th>
+            <th style="width:80px;"><div></div></th>
             <td id="space_wall_face_extra">
                 <script type="text/javascript">
-                    var cts=document.getElementById("ct").childNodes;
-                    cts[1].className="mn_overflow";
-                    getCaptcha("#space_wall_face_extra","float",false, function (captcha) {
-                        var success;
-                        captcha.onSuccess(function () {
-                            success = true;
-                        });
-                        captcha.onRefresh(function () {
-                            success = false;
-                        });
-                        document.getElementById('commentsubmit_btn').addEventListener('click', function () {
-                            setTimeout(function () {
-                                if (success) {
-                                    captcha.refresh();
-                                    success = false;
-                                }
-                            }, 500);
-                        });
-                    });
+                    getCaptcha("#space_wall_face_extra","popup","#commentsubmit_btn");
                 </script>
             </td></tr></tbody></table></div>
             <!--{/block}-->
