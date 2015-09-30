@@ -1,12 +1,16 @@
-<?php
-if (!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
+<?php 
+if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
     exit('Access Denied');
 }
-loadcache('plugin');
-require_once DISCUZ_ROOT . 'source/plugin/geetest/lib/geetestlib.php';
-$geetestlib = new geetestlib();
+date_default_timezone_set("UTC"); 
+require_once DISCUZ_ROOT.'source/plugin/geetest/lib/geetestlib.php';
+$config = include DISCUZ_ROOT . '/source/plugin/geetest/lib/config.php';
 
-$config = include DISCUZ_ROOT . 'data/plugindata/geetest/config.php';
+$geetestlib = new geetestlib();
+loadcache('gt_cache');
+loadcache('gt_mobile');
+
+
 $web_id_key = plang("web_id_key");
 $mobile_id_key = plang("mobile_id_key");
 $web_captcha = plang("web_captcha");
@@ -16,7 +20,7 @@ $mobile_private = plang("mobile_private");
 
 $relevance_geetest_account = plang("relevance_geetest_account");
 $id_note = plang("id_note");
-$key_note = plang("key_note");
+$key_note =plang("key_note");
 $web_button_note = plang("web_button_note");
 $mobile_button_note = plang("mobile_button_note");
 $modify_id_key = plang("modify_id_key");
@@ -39,7 +43,7 @@ $html = <<<HTML
         <tr class="noborder">
             <td class="vtop rowform">     
 
-                <input name="id" value="{$config['webset']['captchaid']}" type="text" class="txt" id="web_captcha" style="border:none;">
+                <input name="id" value="{$_G['cache']['gt_cache']['captchaid']}" type="text" class="txt" id="web_captcha" style="border:none;" disabled="disabled">
 
             </td>
             <td class="vtop tips2" s="1" ><span id="msg_web_id"></span><span id="label_web_id">$id_note</span>
@@ -50,7 +54,7 @@ $html = <<<HTML
         </tr>
         <tr class="noborder">
             <td class="vtop rowform">
-                <input name="key" value="{$config['webset']['privatekey']}" type="text" class="txt" id="web_private" style="border:none;">
+                <input name="key" value="{$_G['cache']['gt_cache']['privatekey']}" type="text" class="txt" id="web_private" style="border:none;" disabled="disabled">
             </td>
             <td class="vtop tips2" s="1"><span id="msg_web_key"></span><span id="label_web_key">$key_note</span>
             </td>
@@ -83,7 +87,7 @@ $html = <<<HTML
         <tr class="noborder">
             <td class="vtop rowform">     
 
-                <input name="id" value="{$config['mobileset']['captchaid']}" type="text" class="txt" id="mobile_captcha" style="border:none;">
+                <input name="id" value="{$_G['cache']['gt_mobile']['captchaid']}" type="text" class="txt" id="mobile_captcha" style="border:none;" disabled="disabled">
 
             </td>
             <td class="vtop tips2" s="1" ><span id="msg_mobile_id"></span><span id="label_mobile_id">$id_note</span>
@@ -94,7 +98,7 @@ $html = <<<HTML
         </tr>
         <tr class="noborder">
             <td class="vtop rowform">
-                <input name="key" value="{$config['mobileset']['privatekey']}" type="text" class="txt" id="mobile_private" style="border:none;">
+                <input name="key" value="{$_G['cache']['gt_mobile']['privatekey']}" type="text" class="txt" id="mobile_private" style="border:none;" disabled="disabled">
             </td>
             <td class="vtop tips2" s="1"><span id="msg_mobile_key"></span><span id="label_mobile_key">$key_note</span>
             </td>
@@ -127,17 +131,19 @@ $html = <<<HTML
 HTML;
 echo $html;
 
+
 if (!empty($_POST['web_keyset'])) {
+
     $web_keyset = $_POST['web_keyset'];
     $gt_cache = check($web_keyset);
     $token = md5('discuz' . (string)time());
     $post_data = array('captchaid' => $gt_cache['captchaid'], 'privatekey' => $gt_cache['privatekey'], 'token' => $token);
     $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
     $result1 = json_decode($result_cache, true);
-    file_put_contents("/home/tanxu/www/post.txt", print_r($result,true),FILE_APPEND);
     if (($result1['res'] == 0 || $result1['res'] == 1) && $result1['mobile'] == 0) {
-        $config['webset'] = $gt_cache;
-        file_put_contents(DISCUZ_ROOT . '/data/plugindata/geetest/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
+        savecache('gt_cache',$gt_cache); 
+        $config['keyset'] = $gt_cache;
+        file_put_contents(DISCUZ_ROOT . '/source/plugin/geetest/lib/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
     }
 }
 if (!empty($_POST['mobile_keyset'])) {
@@ -148,19 +154,25 @@ if (!empty($_POST['mobile_keyset'])) {
     $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
     $result2 = json_decode($result_mobile,true);
     if (($result2['res'] == 0 || $result2['res'] == 1) && $result2['mobile'] == 1) {
-        $config['mobileset'] = $gt_mobile;
-        file_put_contents(DISCUZ_ROOT . '/data/plugindata/geetest/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
+        savecache('gt_mobile',$gt_mobile); 
+        $config['mobile'] = $gt_mobile;
+        file_put_contents(DISCUZ_ROOT . '/source/plugin/geetest/lib/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
     }
 }
-function check($data) {
-    if ($data != "" || $data != null) {
+
+function check($data){
+    if ($data != "" || $data != null ) {
         $keyset = explode("/", $data);
         $keyset['0'] = trim($keyset['0']);
         $keyset['1'] = trim($keyset['1']);
-        $geetest_key = array('captchaid' => $keyset['0'], 'privatekey' => $keyset['1'],);
+        $geetest_key = array(
+                'captchaid'=>$keyset['0'],
+                'privatekey'=>$keyset['1'],
+            );
         return $geetest_key;
     }
 }
+
 
 $geetest_account = plang("geetest_account");
 $id_and_key_error = plang("id_and_key_error");
@@ -172,7 +184,7 @@ $acquisition_note = plang("acquisition_note");
 $yes = plang('yes');
 $no = plang('no');
 
-$post_data = array('captchaid' => $config['webset']['captchaid'], 'privatekey' => $config['webset']['privatekey'], 'token' => md5('discuz' . (string)time()));
+$post_data = array('captchaid' => $_G['cache']['gt_cache']['captchaid'], 'privatekey' => $_G['cache']['gt_cache']['privatekey'], 'token' => md5('discuz' . (string)time()));
 $result = $geetestlib->send_post('http://account.geetest.com/api/discuz/get', $post_data);
 
 $result = json_decode($result, true);
@@ -194,7 +206,7 @@ HTML;
     echo $html;
 } 
 elseif ($result['res'] == 0) {
-    $privatekey = md5($config['webset']['privatekey']);
+    $privatekey = md5($_G['cache']['gt_cache']['privatekey']);
     $html = <<<HTML
         <table class="tb tb2 ">
             <tbody>

@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.1.7]]></item>
+			<item id="version"><![CDATA[7.1.9]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -95,7 +95,6 @@
 		</item>
 		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
-		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
 		<item id="var">
 			<item id="0">
 				<item id="displayorder"><![CDATA[1]]></item>

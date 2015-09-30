@@ -3,9 +3,11 @@
             $("#web_btn").click(function(){
                 if (state == true) {
                     $("#web_captcha").val("");
+                    $("#web_captcha").removeAttr("disabled");
                     $("#web_private").val("");
-                    $("#web_set2").attr("style","display:inline;");
-                    $("#web_set1").attr("style","display:none");
+                    $("#web_private").removeAttr("disabled");
+                    $("#web_set2").show();
+                    $("#web_set1").hide();
                     $(".txt").attr("style","border:#999 solid 1px;");
                     state = false;
                 }else{
@@ -28,24 +30,23 @@
                         jsonp:"callback",
                        
                         success:function(callback){
-                            console.log(callback.mobile);
                             if (callback.success == "fail") {
                                 alert(callback.success);
                                 state = false;
                                 $("#web_set2").css('display','inline'); 
                                 $("#web_set1").css('display','none'); 
-                                window.location.href="admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
+                                window.location.reload();
                                 
                             }else if (callback.success == "success" && callback.mobile == 0) {
                                 alert(callback.success);
                                 state = true;
                                 $("#web_set1").css('display','inline'); 
                                 $("#web_set2").css('display','none'); 
-                                window.location.href="admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
+                                window.location.reload();
                             }else if(callback.success == "success" && callback.mobile == 1){
                                 alert('id type error');
                                 state = false;
-                                window.location.href = "admin.php?action=plugins&operation=config&do=$do&identifier=geetest&pmod=geetestcloud";
+                                window.location.reload();
                             }
                         }
                         
