@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.1.9]]></item>
+			<item id="version"><![CDATA[7.2.0]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -42,7 +42,7 @@
 				<item id="2">
 					<item id="name"><![CDATA[geetestcloud]]></item>
 					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[极验云]]></item>
+					<item id="menu"><![CDATA[极验管理]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -182,9 +182,110 @@
 				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
+			<item id="5">
+				<item id="displayorder"><![CDATA[6]]></item>
+				<item id="title"><![CDATA[注册页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[register]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 auto auto]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="6">
+				<item id="displayorder"><![CDATA[7]]></item>
+				<item id="title"><![CDATA[注册浮动窗验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[register_float]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 auto auto]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="7">
+				<item id="displayorder"><![CDATA[8]]></item>
+				<item id="title"><![CDATA[登陆页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[logging]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 auto auto]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="8">
+				<item id="displayorder"><![CDATA[9]]></item>
+				<item id="title"><![CDATA[登陆浮动窗验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[logging_float]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 auto auto]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="9">
+				<item id="displayorder"><![CDATA[10]]></item>
+				<item id="title"><![CDATA[发帖页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[newthread]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="10">
+				<item id="displayorder"><![CDATA[11]]></item>
+				<item id="title"><![CDATA[回帖页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[reply]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="11">
+				<item id="displayorder"><![CDATA[12]]></item>
+				<item id="title"><![CDATA[发帖回帖浮动窗验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[newthread_reply_float]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="12">
+				<item id="displayorder"><![CDATA[13]]></item>
+				<item id="title"><![CDATA[发帖回帖高级页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[newthread_reply_grade]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="13">
+				<item id="displayorder"><![CDATA[14]]></item>
+				<item id="title"><![CDATA[广播页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[follow]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="14">
+				<item id="displayorder"><![CDATA[15]]></item>
+				<item id="title"><![CDATA[日志页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[blog]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="15">
+				<item id="displayorder"><![CDATA[16]]></item>
+				<item id="title"><![CDATA[留言/评论页面验证位置:]]></item>
+				<item id="description"><![CDATA[请按照格式正确设置验证位置，中间用一个空格隔开。如10 10 10 auto]]></item>
+				<item id="variable"><![CDATA[comment]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[10 10 0 0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
 		</item>
 		<item id="language">
 			<item id="scriptlang">
+				<item id="remind"><![CDATA[在第一次安装时，极验会分配一个公用的id和key。如果您需要更多个性化设置，您可以前往<a href="http://account.geetest.com">account.geetest.com</a>注册生成自己的ID和KEY，在此处替换。如果您已经有极验账号，也可以通过将ID和key与极验账号绑定来完成高级设置。
+若有疑问，请联系极验客服QQ:2314321393    极验用户QQ群：162669835]]></item>
 				<item id="open_seccode_safety"><![CDATA[开启验证安全2.0]]></item>
 				<item id="open_captcha"><![CDATA[是否启用验证插件]]></item>
 				<item id="open_captcha_note"><![CDATA[在本站点启用极验验证来保障验证安全]]></item>

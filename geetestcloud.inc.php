@@ -25,12 +25,17 @@ $web_button_note = plang("web_button_note");
 $mobile_button_note = plang("mobile_button_note");
 $modify_id_key = plang("modify_id_key");
 $click_modify = plang("click_modify");
+$remind = plang("remind");
 $html = <<<HTML
 <script src="http://code.jquery.com/jquery-1.6.min.js" type="text/javascript"></script>
 <script src="./source/plugin/geetest/js/web_keyset.js" type="text/javascript"></script>
 <script src="./source/plugin/geetest/js/mobile_keyset.js" type="text/javascript"></script>
 
     <form action="" method="post">
+    <div style="width:780px;color:red;">
+        $remind
+    </div>
+
     <table class="tb tb2 ">
         <tbody>
         <tr>
@@ -192,6 +197,7 @@ if ($result['res'] == - 1) {
     $html = <<<HTML
         <table class="tb tb2 ">
             <tbody>
+
             <tr>
                 <th colspan="15" class="partition">$geetest_account
                 </th>
