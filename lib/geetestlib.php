@@ -38,18 +38,30 @@ class geetestlib{
 		return 1;
 	}
 
-	function get_widget($captchaid,$product, $popupbtnid="") {
-		$params = array(
-			"gt" => $captchaid,
-			"challenge" => $this->challenge,
-			"product" => $product,
-			"sdk" => GT_SDK_VERSION,
-		);
+	function get_widget($captchaid,$product, $popupbtnid="",$is_login=0) {
+		if ($is_login == 1) {
+			$params = array(
+				"gt" => $captchaid,
+				"product" => $product,
+				"sdk" => GT_SDK_VERSION,
+			);
+		}else{
+			$params = array(
+				"gt" => $captchaid,
+				"challenge" => $this->challenge,
+				"product" => $product,
+				"sdk" => GT_SDK_VERSION,
+			);
+		}
+			
+		
 		if ($product == "popup") {
 			$params["popupbtnid"] = $popupbtnid;
 		}
 		return '<script type="text/javascript" src="'.GT_API_SERVER.'/get.php?'.http_build_query($params).'"></script>';
 	}
+
+
 	
 	
 	public function set_keyset($keyset){

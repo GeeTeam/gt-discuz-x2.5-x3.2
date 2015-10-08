@@ -140,7 +140,7 @@ JS;
         global $_G;
         if ($geetestlib->register($this->keyset['captchaid'])) {
             $captcha = "<div id='$geetest_id'>";
-            $captcha.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param);
+            $captcha.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,1);
             $captcha.= '</div>';
             return $captcha;
         } 
