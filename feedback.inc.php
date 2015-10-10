@@ -45,11 +45,11 @@ $warn = <<<HTML
         <tbody>
         <tr><th colspan="15" class="partition">$assist</th></tr>
             <tr>
-                <td>$tutorial_label <a>http://www.geetest.com/help/discuz</a>
+                <td>$tutorial_label <a href="http://www.geetest.com/install/sections/idx-plugins.html#discuz" target="_Blank">http://www.geetest.com/install/sections/idx-plugins.html#discuz</a>
                 </td>   
             </tr>
             <tr>
-                <td>$website :<a>http://www.geetest.com</a>
+                <td>$website :<a href="http://www.geetest.com" target="_Blank">http://www.geetest.com</a>
                 </td>
                 
                 
