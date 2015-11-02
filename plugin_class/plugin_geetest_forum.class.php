@@ -37,7 +37,7 @@ class plugin_geetest_forum extends plugin_geetest
                 console.log("click");
                 setTimeout(function(){
                     $(".gt_refresh_button").click();
-                },1000);
+                },3000);
             }
             if(status) {
               var buttons = get_button();
