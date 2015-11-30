@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.2.1]]></item>
+			<item id="version"><![CDATA[7.2.2]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -284,15 +284,18 @@
 		</item>
 		<item id="language">
 			<item id="scriptlang">
-				<item id="remind"><![CDATA[在第一次安裝時，極驗會分配一個公用的id和key。如果您需要更多個性化設置，您可以前往<a href="http://account.geetest.com">account.geetest.com</a>註冊生成自己的ID和KEY，在此處替換。如果您已經有極驗賬號，也可以通過將ID和key與極驗賬號綁定來完成高級設置。
-若有疑問，請聯繫極驗客服QQ:2314321393    極驗用戶QQ群：162669835]]></item>
+			             	<item id="logo_title"><![CDATA[極驗驗證]]></item>
+				<item id="remind_1"><![CDATA[在第一次安裝時，極驗會分配一個公用的id和key 。]]></item>
+				<item id="remind_2"><![CDATA[如果您需要更多個性化設置，您可以前往<a href="http://account.geetest.com">account.geetest.com</a>註冊生成自己的ID和KEY，在此處替換。如果您已經有極驗賬號，也可以通過將ID和key與極驗賬號綁定來完成高級設置。]]></item>
+				<item id="remind_3"><![CDATA[若有疑問，請聯繫極驗客服QQ:2314321393    極驗用戶QQ群：162669835]]></item>
+				<item id="remind_4"><![CDATA[在第一次安裝時，極驗會分配一個公用的移動端的ID和KEY，只會在您打開手機版論壇時有效果。]]></item>
+				<item id="remind_5"><![CDATA[註：上方為手機版專用ID和KEY，若您沒有開啟則不需要修改。]]></item>
 				<item id="open_seccode_safety"><![CDATA[開啟驗證安全2.0]]></item>
 				<item id="open_captcha"><![CDATA[是否啟用驗證插件]]></item>
 				<item id="open_captcha_note"><![CDATA[在本站點啟用極驗驗證來保障驗證安全]]></item>
 				<item id="open_mobile"><![CDATA[是否開啟手機版驗證]]></item>
 			             	<item id="modify_id_key"><![CDATA[修改ID和KEY]]></item>
 				<item id="click_modify"><![CDATA[確認修改]]></item>
-				<item id="feeback_label"><![CDATA[意見內容：]]></item>
 				<item id="id_and_key_error"><![CDATA[ID或KEY錯誤！]]></item>
 				<item id="seccode_invalid"><![CDATA[錯誤：滑動驗證不通過！請再次滑動，通過驗證！]]></item>
 				<item id="seccode_expired"><![CDATA[錯誤：請不要再次提交！滑動驗證已使用過，請刷新之後在使用！]]></item>
@@ -308,13 +311,9 @@
 				<item id="contact"><![CDATA[聯繫郵箱]]></item>
 				<item id="QQqun"><![CDATA[討論群]]></item>
 				<item id="about_link_bug"><![CDATA[BUG提交QQ：877077145（Break）]]></item>
-				<item id="about_link_tech"><![CDATA[技術支持QQ：632618615（Tristan）]]></item>
-				<item id="about_link_product"><![CDATA[產品建議QQ：315815060（Austin）]]></item>
-				<item id="about_link_commerce"><![CDATA[商務合作QQ：41570993（Hank）]]></item>
-				<item id="feeback_title_label"><![CDATA[在線反饋]]></item>
-				<item id="feeback_content"><![CDATA[#填寫你的反饋信息內容#]]></item>
-				<item id="feeback_note"><![CDATA[您可以將您寶貴的意見及時反饋給我們，我們會盡力完善極驗驗證，給您提供更便捷的驗證服務！]]></item>
-				<item id="feeback_success"><![CDATA[反饋成功]]></item>
+				<item id="about_link_tech"><![CDATA[技術支持QQ：877077145（Break）]]></item>
+				<item id="about_link_product"><![CDATA[產品建議QQ：1851376548（Bill）]]></item>
+				<item id="about_link_commerce"><![CDATA[商務合作QQ：434711855（Tony）]]></item>
 				<item id="relevance_cloud"><![CDATA[關聯到極驗雲]]></item>
 				<item id="geetest_id"><![CDATA[公鑰]]></item>
 				<item id="geetest_key"><![CDATA[私鑰]]></item>

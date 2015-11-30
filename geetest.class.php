@@ -205,6 +205,10 @@ JS;
             return;
         }
     }
+
+    function global_footerlink() {
+        return '&nbsp;<a href="http://www.geetest.com" target="_blank" title="'.lang('plugin/geetest', 'logo_title').'"><img src="source/plugin/geetest/geetest.png" /></a>';
+    }
     
     public function geetest_validate($challenge, $validate, $seccode) {
         $geetest = new geetestlib();

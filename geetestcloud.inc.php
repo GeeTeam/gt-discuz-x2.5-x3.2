@@ -25,16 +25,18 @@ $web_button_note = plang("web_button_note");
 $mobile_button_note = plang("mobile_button_note");
 $modify_id_key = plang("modify_id_key");
 $click_modify = plang("click_modify");
-$remind = plang("remind");
+$remind_1 = plang("remind_1");
+$remind_2 = plang("remind_2");
+$remind_3 = plang("remind_3");
+$remind_4 = plang("remind_4");
+$remind_5 = plang("remind_5");
 $html = <<<HTML
 <script src="http://code.jquery.com/jquery-1.6.min.js" type="text/javascript"></script>
 <script src="./source/plugin/geetest/js/web_keyset.js" type="text/javascript"></script>
 <script src="./source/plugin/geetest/js/mobile_keyset.js" type="text/javascript"></script>
 
     <form action="" method="post">
-    <div style="width:780px;color:red;">
-        $remind
-    </div>
+
 
     <table class="tb tb2 ">
         <tbody>
@@ -80,6 +82,12 @@ $html = <<<HTML
     </form>
 
      <form action="" method="post">
+        <div style="width:780px;color:red;">
+            <br>
+            <p>$remind_1</p>
+            <p>$remind_2</p>
+            <p>$remind_3</p><br>
+        </div>
     <table class="tb tb2 ">
         <tbody>
         <tr>
@@ -122,6 +130,13 @@ $html = <<<HTML
         </tbody>
     </table>
     </form>
+            <div style="width:780px;color:red;">
+            <br>
+            <p>$remind_4</p>
+    
+            <p>$remind_5</p><br>
+
+        </div>
     <style type="text/css">
     .web_set1,.web_set2,.mobile_set1,.mobile_set2,.rele{
   background-color: #00b7f1;
