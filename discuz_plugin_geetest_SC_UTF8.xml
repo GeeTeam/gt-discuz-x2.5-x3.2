@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.2.2]]></item>
+			<item id="version"><![CDATA[7.2.3]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -284,7 +284,6 @@
 		</item>
 		<item id="language">
 			<item id="scriptlang">
-			             	<item id="logo_title"><![CDATA[极验验证]]></item>
 				<item id="remind_1"><![CDATA[在第一次安装时，极验会分配一个公用的id和key 。]]></item>
 				<item id="remind_2"><![CDATA[如果您需要更多个性化设置，您可以前往<a href="http://account.geetest.com">account.geetest.com</a>注册生成自己的ID和KEY，在此处替换。如果您已经有极验账号，也可以通过将ID和key与极验账号绑定来完成高级设置。]]></item>
 				<item id="remind_3"><![CDATA[若有疑问，请联系极验客服QQ:2314321393    极验用户QQ群：162669835]]></item>
