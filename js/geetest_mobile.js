@@ -45,11 +45,11 @@ window.addEventListener('load',function(){
     window.gt_custom_ajax = function(result, id, message) {
       if(result) {
         document.getElementById(id).parentNode.parentNode.style.display = "none";
-        window.GeeTest[0].refresh();
         if (data_form == "registerform" || data_form =="loginform") {
             btn.firstChild.click();
         }else{
             btn.click();
         }
+        window.GeeTest[0].refresh();
       }
     }

@@ -54,17 +54,21 @@ JS;
 
 	//支付
 	function spacecp_credit_bottom(){
-		$cur_mod = 'popup';
-		$btn_id = "addfundssubmit_btn";
-		$gt_geetest_id = 'gt_spacecp_credit_bottom';
-		return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_pay_submit($gt_geetest_id);
+		if ($this->_cur_mod_is_valid()) {
+			$cur_mod = 'popup';
+			$btn_id = "addfundssubmit_btn";
+			$gt_geetest_id = 'gt_spacecp_credit_bottom';
+			return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_pay_submit($gt_geetest_id);
+		}
 	}
-    //广播
+	//广播
 	function follow_top() {
-	    $cur_mod = 'follow';
-		$gt_geetest_id = 'gt_follow_top';
-		$page_type = 'follow';
-		return $this->modify_follow_css().$this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fast_form_pos($gt_geetest_id, 'fastpostform');
+		if ($this->_cur_mod_is_valid()) {
+			$cur_mod = 'follow';
+			$gt_geetest_id = 'gt_follow_top';
+			$page_type = 'follow';
+			return $this->modify_follow_css().$this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fast_form_pos($gt_geetest_id, 'fastpostform');
+		}
 	}
             function modify_follow_css(){
                 $css = <<<html
@@ -76,26 +80,31 @@ html;
             }
 	//日志
 	function spacecp_blog_middle() {
-	    $cur_mod = 'blog';
-		$gt_geetest_id = 'gt_spacecp_blog_middle';
-		$page_type = 'blog';
-		return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+		if ($this->_cur_mod_is_valid()) {
+			$cur_mod = 'blog';
+			$gt_geetest_id = 'gt_spacecp_blog_middle';
+			$page_type = 'blog';
+			return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+		}
 	}
 	//日志评论
 	function space_blog_face_extra() {
-	    $cur_mod = 'popup';
-		$gt_geetest_id = 'gt_space_blog_face_extra';
-		$btn_id = "commentsubmit_btn";
-		return $this->_code_output($cur_mod, $gt_geetest_id, "",$btn_id);
+		if ($this->_cur_mod_is_valid()) {
+			$cur_mod = 'popup';
+			$gt_geetest_id = 'gt_space_blog_face_extra';
+			$btn_id = "commentsubmit_btn";
+			return $this->_code_output($cur_mod, $gt_geetest_id, "",$btn_id);
+		}
 	}
 	
 	function space_wall_face_extra(){
-        $cur_mod = "popup";
-        $gt_geetest_id = "gt_space_wall_face_extra";
-        $btn_id = "commentsubmit_btn";
-    	return $this->_code_output($cur_mod, $gt_geetest_id,"", $btn_id);     
-    	
-    }
+		if ($this->_cur_mod_is_valid()) {
+			$cur_mod = "popup";
+			$gt_geetest_id = "gt_space_wall_face_extra";
+			$btn_id = "commentsubmit_btn";
+			return $this->_code_output($cur_mod, $gt_geetest_id,"", $btn_id);     
+		}
+	}
     //处理广播、日志验证
     function spacecp_follow_recode(){
     	

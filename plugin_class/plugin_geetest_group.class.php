@@ -3,10 +3,12 @@
 class plugin_geetest_group  extends plugin_geetest{  
     
     function post_middle(){
-        $cur_mod = 'newthread';
-        $page_type = 'newthread_reply_grade';
-        $gt_geetest_id = 'gt_post_middle';
-        return $this->_code_output($cur_mod ,$gt_geetest_id, $page_type).$this->fix_post_middle();
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = 'newthread';
+            $page_type = 'newthread_reply_grade';
+            $gt_geetest_id = 'gt_post_middle';
+            return $this->_code_output($cur_mod ,$gt_geetest_id, $page_type).$this->fix_post_middle();
+        }
     }
 
     function fix_post_middle(){
@@ -39,17 +41,21 @@ JS;
 
 
     function post_infloat_middle() { 
-        $cur_mod = 'newthread';
-        $page_type = 'newthread_reply_float';
-        $gt_geetest_id = 'gt_post_infloat_middle';
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = 'newthread';
+            $page_type = 'newthread_reply_float';
+            $gt_geetest_id = 'gt_post_infloat_middle';
+            return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+        }
     }
 
     function viewthread_fastpost_content () {
-        $cur_mod = 'reply';
-        $page_type = 'reply';
-        $gt_geetest_id = 'gt_viewthread_fastpost_content';
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fastpost_btn_extra_pos($gt_geetest_id);
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = 'reply';
+            $page_type = 'reply';
+            $gt_geetest_id = 'gt_viewthread_fastpost_content';
+            return $this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fastpost_btn_extra_pos($gt_geetest_id);
+        }
     }
 
     function _fix_fastpost_btn_extra_pos($gt_geetest_id) {
@@ -135,18 +141,22 @@ JS;
 
     //直播贴回复
     function forumdisplay_postbutton_top(){
-        $cur_mod = 'popup';
-        $btn_id = "livereplysubmit";
-        $gt_geetest_id = 'gt_forumdisplay_postbutton_top';
-        return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_zhibo_reply($gt_geetest_id);
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = 'popup';
+            $btn_id = "livereplysubmit";
+            $gt_geetest_id = 'gt_forumdisplay_postbutton_top';
+            return $this->_code_output($cur_mod, $gt_geetest_id, "", $btn_id).$this->_fix_zhibo_reply($gt_geetest_id);
+        }
     }
     
     //页面底部发帖
     function forumdisplay_fastpost_btn_extra() {
-        $cur_mod = 'newthread';
-        $page_type = 'newthread';
-        $gt_geetest_id = 'gt_forumdisplay_fastpost_btn_extra';
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fastpost_btn_extra_pos($gt_geetest_id);
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = 'newthread';
+            $page_type = 'newthread';
+            $gt_geetest_id = 'gt_forumdisplay_fastpost_btn_extra';
+            return $this->_code_output($cur_mod, $gt_geetest_id, $page_type).$this->_fix_fastpost_btn_extra_pos($gt_geetest_id);
+        }
     }
 
     //快速回复

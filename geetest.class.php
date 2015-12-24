@@ -90,7 +90,7 @@ JS;
     //QQ互联注册嵌入点
     public function global_header() {
         $cur = CURMODULE;
-        if ($cur == "connect") {
+        if ($cur == "connect" && $this->_cur_mod_is_valid()) {
             $cur_mod = "popup";
             $gt_geetest_id = "gt_ global_header";
             $btn_id = "registerformsubmit";
@@ -127,7 +127,7 @@ JS;
         if ($_G['uid'] == '1') {
             return;
         } 
-        else if ($_G['uid'] == '0') {
+        else if ($_G['uid'] == '0' && $this->logging_mod_valid()) {
             $cur_mod = "popup";
             $gt_geetest_id = "gt_header_logging_input";
             $btn_id = "header-loggin-btn";
@@ -151,9 +151,9 @@ JS;
     
     public function _code_output($cur_mod = '', $geetest_id = 'gt_geetest', $page_type = '', $param = '') {
         
-        if (!($this->_cur_mod_is_valid())) {
-            return;
-        }
+        // if (!($this->_cur_mod_is_valid())) {
+        //     return;
+        // }
         if (!$this->captcha_allow) {
             return;
         }

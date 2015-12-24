@@ -4,29 +4,33 @@
    
 class plugin_geetest_member  extends plugin_geetest{  
 
-    function register_input_output(){       
-        $cur_mod = "register";
-        if($_GET["infloat"] == "yes"){
-            $gt_geetest_id = "gt_float_register_input";
-            $page_type = "register_float";
-        }else{
-            $gt_geetest_id = "gt_page_register_input";
-            $page_type = "register";
-        }
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+    function register_input_output(){    
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = "register";
+            if($_GET["infloat"] == "yes"){
+                $gt_geetest_id = "gt_float_register_input";
+                $page_type = "register_float";
+            }else{
+                $gt_geetest_id = "gt_page_register_input";
+                $page_type = "register";
+            }
+            return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
+       }   
 
     }
         
     function logging_input_output() {
-        $cur_mod = "logging";
-        if($_GET["infloat"] == "yes"){
-            $gt_geetest_id = "gt_float_logging_input";
-            $page_type = "logging_float";
-        }else{
-            $gt_geetest_id = "gt_page_logging_input";
-            $page_type = "logging";
+        if ($this->_cur_mod_is_valid()) {
+            $cur_mod = "logging";
+            if($_GET["infloat"] == "yes"){
+                $gt_geetest_id = "gt_float_logging_input";
+                $page_type = "logging_float";
+            }else{
+                $gt_geetest_id = "gt_page_logging_input";
+                $page_type = "logging";
+            }
+            return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
         }
-        return $this->_code_output($cur_mod, $gt_geetest_id, $page_type);
     }
 
     
