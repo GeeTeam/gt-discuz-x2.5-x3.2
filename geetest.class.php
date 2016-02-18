@@ -31,6 +31,7 @@ class plugin_geetest
         else {
             $this->keyset = $_G['cache']['gt_cache'];
         }
+        $this->is_md5 = $_G['cache']['is_md5'];
         $this->style = $_G['cache']['plugin']['geetest'];
         
         //初始化
@@ -140,7 +141,7 @@ JS;
         global $_G;
         if ($geetestlib->register($this->keyset['captchaid'])) {
             $captcha = "<div id='$geetest_id'>";
-            $captcha.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,1);
+            $captcha.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,1,$this->is_md5,$this->keyset['privatekey']);
             $captcha.= '</div>';
             return $captcha;
         } 
@@ -169,8 +170,7 @@ JS;
                 case 'register':
                 case 'logging':
                     $output = " <div id='$geetest_id' class='rfm' style='$style'><table><tbody><tr><th><div>*&#28369;&#21160;&#39564;&#35777;:</div></th><td>";
-                    
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float');
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',0,$this->is_md5,$this->keyset['privatekey']);
                     $output.= '</td></tr></tbody></table></div>';
                     break;
 
@@ -179,7 +179,7 @@ JS;
                 case 'edit':
                     $output = "<div id='$geetest_id' class='' style='$style'><table><tbody><tr><th style='width:80px;'><div id='gt_tx'>*&#28369;&#21160;&#39564;&#35777;:</div></th><td>";
                     
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float');
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',0,$this->is_md5,$this->keyset['privatekey']);
                     $output.= '</td></tr></tbody></table></div>';
                     break;
 
@@ -188,13 +188,13 @@ JS;
                 case 'comment':
                     $output = "<div id='$geetest_id' class='' style='$style'><table><tbody><tr><th style='width:80px;'><div>*&#28369;&#21160;&#39564;&#35777;:</div></th><td>";
                     
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float');
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',0,$this->is_md5,$this->keyset['privatekey']);
                     $output.= '</td></tr></tbody></table></div>';
                     break;
 
                 case 'popup':
                     $output = "<div id='$geetest_id'>";
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param);
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,0,$this->is_md5,$this->keyset['privatekey']);
                     $output.= '</div>';
                     break;
             }

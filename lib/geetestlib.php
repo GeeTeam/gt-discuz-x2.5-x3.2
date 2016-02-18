@@ -38,7 +38,7 @@ class geetestlib{
 		return 1;
 	}
 
-	function get_widget($captchaid,$product, $popupbtnid="",$is_login=0) {
+	function get_widget($captchaid,$product, $popupbtnid="",$is_login=0,$is_md5,$privatekey) {
 		if ($is_login == 1) {
 			$params = array(
 				"gt" => $captchaid,
@@ -46,12 +46,23 @@ class geetestlib{
 				"sdk" => GT_SDK_VERSION,
 			);
 		}else{
-			$params = array(
-				"gt" => $captchaid,
-				"challenge" => $this->challenge,
-				"product" => $product,
-				"sdk" => GT_SDK_VERSION,
-			);
+			#加密
+			if ($is_md5 == 1) {
+				$params = array(
+					"gt" => $captchaid,
+					"challenge" => md5($this->challenge.$privatekey),
+					"product" => $product,
+					"sdk" => GT_SDK_VERSION,
+				);
+			#未加密
+			}elseif ($is_md5 == 0) {
+				$params = array(
+					"gt" => $captchaid,
+					"challenge" => $this->challenge,
+					"product" => $product,
+					"sdk" => GT_SDK_VERSION,
+				);
+			}
 		}
 			
 		
