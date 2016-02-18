@@ -2,8 +2,9 @@
  return array (
   'keyset' => 
   array (
-    'captchaid' => '1d87ac5c370eeb8036e0b7e392e96012',
-    'privatekey' => '31808a92cd6c228d137fee498deec795',
+    'captchaid' => '2a7c84fcd53dc87d105e4cd231e534ac',
+    'privatekey' => '699339451fa782d31a78189745fb3d72',
+    'is_md5' => 0,
   ),
   'mobile' => 
   array (

@@ -92,13 +92,12 @@ class plugin_geetest_member  extends plugin_geetest{
     public function _show(){
          include template('common/header_ajax');
          $js = <<<JS
-         <script type="text/javascript" reload="1">
+ <script type="text/javascript" reload="1">
             var btn=document.getElementById("header-loggin-btn");
             btn.click();
          </script>
 JS;
-
-            echo($js);
+        echo($js);
          include template('common/footer_ajax');
          dexit();
     }
