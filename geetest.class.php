@@ -70,7 +70,15 @@ class plugin_geetest
         // var_dump($_G['group']);
         
     }
-    
+
+    function global_cpnav_top() {
+        global $_G;
+        $javascript = <<<JS
+                <script src="http://static.geetest.com/static/tools/gt.js"></script>
+JS;
+        return $javascript;
+    }
+
     //修复QQ互联注册
     function _fix_register($gt_geetest_id) {
         $output = <<<JS
@@ -81,7 +89,6 @@ class plugin_geetest
             registerformsubmit.parentNode.insertBefore(geetest, registerformsubmit);
         }
         _attachEvent(window, 'load', move_fast_geetest_before_submit);
-
     </script>
 JS;
         return $output;
@@ -114,7 +121,6 @@ JS;
         o.parentNode.insertBefore(geetest, o);
     }
     _attachEvent(window, 'load', add_botton);
-
     </script>
 JS;
         return $output;
