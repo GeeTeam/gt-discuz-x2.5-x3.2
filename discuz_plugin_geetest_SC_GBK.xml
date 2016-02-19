@@ -309,9 +309,7 @@
 				<item id="website"><![CDATA[官方网站]]></item>
 				<item id="contact"><![CDATA[联系邮箱]]></item>
 				<item id="QQqun"><![CDATA[讨论群]]></item>
-				<item id="about_link_bug"><![CDATA[BUG提交QQ：877077145（Break）]]></item>
-				<item id="about_link_tech"><![CDATA[技术支持QQ：877077145（Break）]]></item>
-				<item id="about_link_product"><![CDATA[产品建议QQ：1851376548（Bill）]]></item>
+				<item id="about_link_product"><![CDATA[产品建议及BUG提交QQ：1851376548（Bill）]]></item>
 				<item id="about_link_commerce"><![CDATA[商务合作QQ：434711855（Tony）]]></item>
 				<item id="relevance_cloud"><![CDATA[关联到极验云]]></item>
 				<item id="geetest_id"><![CDATA[公钥]]></item>

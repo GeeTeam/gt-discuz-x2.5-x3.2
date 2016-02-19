@@ -44,9 +44,7 @@ $warn = <<<HTML
 
         </br>
     
-        <tr class="noborder"><td class="vtop tips2" s="1"><a target="_self" href="http://wpa.qq.com/msgrd?v=3&amp;uin=877077145&amp;site=qq&amp;menu=yes">$about_link_tech<img src="http://wpa.qq.com/pa?p=2:877077145:44"></a></td></tr>
         <tr class="noborder"><td class="vtop tips2" s="1"><a target="_self" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1851376548&amp;site=qq&amp;menu=yes">$about_link_product<img src="http://wpa.qq.com/pa?p=2:1851376548:44"></a></td></tr>
-        <tr class="noborder"><td class="vtop tips2" s="1"><a target="_self" href="http://wpa.qq.com/msgrd?v=3&amp;uin=877077145&amp;site=qq&amp;menu=yes">$about_link_bug<img src="http://wpa.qq.com/pa?p=2:877077145:44"></a></td></tr>
         <tr class="noborder"><td class="vtop tips2" s="1"><a target="_self" href="http://wpa.qq.com/msgrd?v=3&amp;uin=434711855&amp;site=qq&amp;menu=yes">$about_link_commerce<img src="http://wpa.qq.com/pa?p=2:434711855:44"></a></td></tr>
         
         </tbody>
