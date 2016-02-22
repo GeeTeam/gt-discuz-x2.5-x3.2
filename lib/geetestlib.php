@@ -64,7 +64,6 @@ class geetestlib{
 		if ($is_mobile == 1) {
 			$params["width"] = 300;
 		}
-		file_put_contents('./filename.txt', var_export($params,true));
 		return '<script type="text/javascript" src="'.GT_API_SERVER.'/get.php?'.http_build_query($params).'"></script>';
 	}
 

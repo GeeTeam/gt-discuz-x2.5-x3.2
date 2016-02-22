@@ -138,7 +138,7 @@ HTML;
         $cur_mod = empty($cur_mod) ? CURMODULE : $cur_mod;
         $style = $this->getStyle($page_type);
         $geetestlib = new geetestlib();
-        if ($geetestlib->register($this->keyset['captchaid'])) {
+        if (strlen($geetestlib->register($this->keyset['captchaid'])) == 32) {
             
             switch ($cur_mod) {
                 case 'register':
