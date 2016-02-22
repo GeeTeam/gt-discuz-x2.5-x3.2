@@ -26,49 +26,45 @@ class geetestlib{
                 	"privatekey" => ""
             		);
 	}
-	public static function get_widget_mobile($captcha){
-	      return '<script type="text/javascript" src="http://api.geetest.com/get.php?gt='.$captcha.'&product=embed&width=300" async></script>';
-	}
+	// public static function get_widget_mobile($captcha){
+	//       return '<script type="text/javascript" src="http://api.geetest.com/get.php?gt='.$captcha.'&product=embed&width=300" async></script>';
+	// }
 
 	function register($captchaid) {
 		$this->challenge = $this->_send_request("/register.php", array("gt"=>$captchaid));
-		if (strlen($this->challenge) != 32) {
-			return 0;
-		}
-		return 1;
+		// if (strlen($this->challenge) != 32) {
+		// 	return 0;
+		// }
+		// return 1;
+		return $this->challenge;
 	}
 
-	function get_widget($captchaid,$product, $popupbtnid="",$is_login=0,$is_md5,$privatekey) {
-		if ($is_login == 1) {
+	public function get_widget($captchaid,$product, $popupbtnid="",$is_md5,$privatekey,$is_mobile) {
+		#加密
+		if ($is_md5 == 1) {
 			$params = array(
 				"gt" => $captchaid,
+				"challenge" => md5($this->register($captchaid).$privatekey),
 				"product" => $product,
 				"sdk" => GT_SDK_VERSION,
 			);
-		}else{
-			#加密
-			if ($is_md5 == 1) {
-				$params = array(
-					"gt" => $captchaid,
-					"challenge" => md5($this->challenge.$privatekey),
-					"product" => $product,
-					"sdk" => GT_SDK_VERSION,
-				);
-			#未加密
-			}elseif ($is_md5 == 0) {
-				$params = array(
-					"gt" => $captchaid,
-					"challenge" => $this->challenge,
-					"product" => $product,
-					"sdk" => GT_SDK_VERSION,
-				);
-			}
+		#未加密
+		}elseif ($is_md5 == 0) {
+			$params = array(
+				"gt" => $captchaid,
+				"challenge" => $this->register($captchaid),
+				"product" => $product,
+				"sdk" => GT_SDK_VERSION,
+			);
 		}
-			
 		
 		if ($product == "popup") {
 			$params["popupbtnid"] = $popupbtnid;
 		}
+		if ($is_mobile == 1) {
+			$params["width"] = 300;
+		}
+		file_put_contents('./filename.txt', var_export($params,true));
 		return '<script type="text/javascript" src="'.GT_API_SERVER.'/get.php?'.http_build_query($params).'"></script>';
 	}
 

@@ -66,18 +66,9 @@ class plugin_geetest
                 $this->captcha_allow = false;
             }
         }
-        
         // var_dump($_G['group']);
-        
     }
 
-    function global_cpnav_top() {
-        global $_G;
-        $javascript = <<<JS
-                <script src="http://static.geetest.com/static/tools/gt.js"></script>
-JS;
-        return $javascript;
-    }
 
     //修复QQ互联注册
     function _fix_register($gt_geetest_id) {
@@ -105,55 +96,33 @@ JS;
         }
     }
     
-    function _fix_header_login($btn_id, $gt_geetest_id) {
-        $output = <<<JS
-    <script type="text/javascript">
-    function add_botton(){
-        //add submit button
-        var lsform = $('lsform');
-        var o = document.createElement("button");  
-        o.id = "$btn_id";       
-        o.setAttribute('type', 'submit');                               
-        o.value = ""; 
-        o.style.display="none";
-        lsform.appendChild(o);
-        var geetest = $('$gt_geetest_id');
-        o.parentNode.insertBefore(geetest, o);
-    }
-    _attachEvent(window, 'load', add_botton);
-    </script>
-JS;
-        return $output;
-    }
-    
-    public function global_footer() {
+    function global_login_extra() {
         global $_G;
-        
-        // echo $_G['uid'];
         if ($_G['uid'] == '1') {
             return;
         } 
         else if ($_G['uid'] == '0' && $this->logging_mod_valid()) {
-            $cur_mod = "popup";
-            $gt_geetest_id = "gt_header_logging_input";
-            $btn_id = "header-loggin-btn";
-            return $this->_fix_header_login($btn_id, $gt_geetest_id) . $this->login_captcha($cur_mod, $gt_geetest_id, '', $btn_id);
-        }
+        $html = <<<HTML
+        <script type="text/javascript" src="source/plugin/geetest/js/gt-init.js"></script>
+        <script type="text/javascript">
+            var lsform = document.getElementById('lsform');
+            var o = document.createElement("button");  
+            o.id = "header-loggin-btn";       
+            o.setAttribute('type', 'submit');                               
+            o.value = ""; 
+            o.style.display="none";
+            lsform.appendChild(o);
+        </script>
+        <div><table><tbody><tr><th style="width:80px;"><div></div></th><td id="index_login">
+        </td></tr></tbody></table></div>
+        <script type="text/javascript">
+            getCaptcha("#index_login","popup","#header-loggin-btn");
+        </script>
+HTML;
+        return $html;
     }
-    
-    public function login_captcha($cur_mod, $geetest_id, $page_type, $param) {
-        $geetestlib = new geetestlib();
-        global $_G;
-        if ($geetestlib->register($this->keyset['captchaid'])) {
-            $captcha = "<div id='$geetest_id'>";
-            $captcha.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,1,$this->keyset['is_md5'],$this->keyset['privatekey']);
-            $captcha.= '</div>';
-            return $captcha;
-        } 
-        else {
-            return;
-        }
-    }
+}
+
     
     public function _code_output($cur_mod = '', $geetest_id = 'gt_geetest', $page_type = '', $param = '') {
         
@@ -175,7 +144,7 @@ JS;
                 case 'register':
                 case 'logging':
                     $output = " <div id='$geetest_id' class='rfm' style='$style'><table><tbody><tr><th><div>*&#28369;&#21160;&#39564;&#35777;:</div></th><td>";
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',0,$this->keyset['is_md5'],$this->keyset['privatekey']);
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',$this->keyset['is_md5'],$this->keyset['privatekey'],0);
                     $output.= '</td></tr></tbody></table></div>';
                     break;
 
@@ -184,7 +153,7 @@ JS;
                 case 'edit':
                     $output = "<div id='$geetest_id' class='' style='$style'><table><tbody><tr><th style='width:80px;'><div id='gt_tx'>*&#28369;&#21160;&#39564;&#35777;:</div></th><td>";
                     
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',0,$this->keyset['is_md5'],$this->keyset['privatekey']);
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',$this->keyset['is_md5'],$this->keyset['privatekey'],0);
                     $output.= '</td></tr></tbody></table></div>';
                     break;
 
@@ -193,13 +162,13 @@ JS;
                 case 'comment':
                     $output = "<div id='$geetest_id' class='' style='$style'><table><tbody><tr><th style='width:80px;'><div>*&#28369;&#21160;&#39564;&#35777;:</div></th><td>";
                     
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',0,$this->keyset['is_md5'],$this->keyset['privatekey']);
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'float','',$this->keyset['is_md5'],$this->keyset['privatekey'],0);
                     $output.= '</td></tr></tbody></table></div>';
                     break;
 
                 case 'popup':
                     $output = "<div id='$geetest_id'>";
-                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,0,$this->keyset['is_md5'],$this->keyset['privatekey']);
+                    $output.= $geetestlib->get_widget($this->keyset['captchaid'], 'popup', $param,$this->keyset['is_md5'],$this->keyset['privatekey'],0);
                     $output.= '</div>';
                     break;
             }

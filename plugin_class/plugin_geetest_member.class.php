@@ -57,7 +57,6 @@ class plugin_geetest_member  extends plugin_geetest{
         }
         $cur = CURMODULE;
         if ($this->open && $this->logging_mod_valid()) {
-                                // $this->_init();
             if($_GET['username'] != "" && $_GET['password'] != "" && $_GET['lssubmit'] == "yes"){
                 if(( $_GET['geetest_validate'] == null && $_GET['geetest_seccode'] == null) || 
                     ($_GET['geetest_validate'] == "" && $_GET['geetest_seccode'] == "")){
@@ -91,7 +90,7 @@ class plugin_geetest_member  extends plugin_geetest{
     public function _show(){
          include template('common/header_ajax');
          $js = <<<JS
- <script type="text/javascript" reload="1">
+        <script type="text/javascript" reload="1">
             var btn=document.getElementById("header-loggin-btn");
             btn.click();
          </script>

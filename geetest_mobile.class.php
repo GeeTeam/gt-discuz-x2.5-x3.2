@@ -90,13 +90,15 @@ class mobileplugin_geetest {
         if( !($this->_cur_mod_is_valid() && $this->captcha_allow ) ){
             return ;
         }
+                $geetestlib = new geetestlib();
+
         global $_G;
             $output = '';
             $output = '<div class="geetest" style="display: none;position: fixed;left: 0;top: 0;width: 100%;height: 100%;">
             <div class="gt_bg" style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;background-color: gray;opacity: 0.7;"></div><div class="wrap" style="width: 300px;margin: 10px auto;text-align: center;background-color: #fff;z-index: 2;position: relative;
 "><div class="top" style="padding: 0 8px;height: 44px;z-index: 1;position: relative;text-align: center;font-weight: 500;"><a class="exit" id="close" href="javascript:;"></a><div class="title" style=" line-height: 45px;width: 200px;margin: 0 auto;">&#35831;&#36890;&#36807;&#39564;&#35777;
         </div></div>';
-            $output .= geetestlib::get_widget_mobile($this->keyset['captchaid']);
+            $output .= $geetestlib->get_widget($this->keyset['captchaid'],'embed', $popupbtnid='',$this->keyset['is_md5'],$this->keyset['privatekey'],1);
             $output .= '</div>';
             return $output;
     }

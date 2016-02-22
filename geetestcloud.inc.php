@@ -161,7 +161,7 @@ if (!empty($_POST['web_keyset'])) {
     $result_cache = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
     $result1 = json_decode($result_cache, true);
     if (($result1['res'] == 0 || $result1['res'] == 1) && $result1['mobile'] == 0) {
-        $gt_cache['is_md5'] = $result1['challenge'];
+        $gt_cache['is_md5'] = $result1['register'];
         savecache('gt_cache',$gt_cache); 
         $config['keyset'] = $gt_cache;
         file_put_contents(DISCUZ_ROOT . '/source/plugin/geetest/lib/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
@@ -175,7 +175,7 @@ if (!empty($_POST['mobile_keyset'])) {
     $result_mobile = $geetestlib->send_post("http://account.geetest.com/api/discuz/get", $post_data);
     $result2 = json_decode($result_mobile,true);
     if (($result2['res'] == 0 || $result2['res'] == 1) && $result2['mobile'] == 1) {
-        $gt_mobile['is_md5'] = $result2['challenge'];
+        $gt_mobile['is_md5'] = $result2['register'];
         savecache('gt_mobile',$gt_mobile); 
         $config['mobile'] = $gt_mobile;
         file_put_contents(DISCUZ_ROOT . '/source/plugin/geetest/lib/config.php', "<?php\n" . " return " . var_export($config, true) . ";?>");
@@ -274,8 +274,6 @@ elseif ($result['res'] == 1) {
             <th colspan="15" class="partition">
             </th>
         </tr>
-      
-        
         </tbody>
     </table>
 HTML;

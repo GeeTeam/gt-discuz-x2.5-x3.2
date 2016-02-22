@@ -2,13 +2,14 @@
  return array (
   'keyset' => 
   array (
-    'captchaid' => '2a7c84fcd53dc87d105e4cd231e534ac',
-    'privatekey' => '699339451fa782d31a78189745fb3d72',
+    'captchaid' => 'd6c2fa4a9222ebec8b58cdf75c96ec3a',
+    'privatekey' => 'e50ff77f22eb30749314deb0060aa5f5',
     'is_md5' => 0,
   ),
   'mobile' => 
   array (
-    'captchaid' => 'f7a2e491a1e880b0b3c0109323bf2bf5',
-    'privatekey' => '25bff241f8e75cc8851f187e2c410097',
+    'captchaid' => 'f9b91c4119e1700a3a9d43d91cd8bcfe',
+    'privatekey' => '535fa59a0fcb405fecae4f8340dd297c',
+    'is_md5' => 0,
   ),
 );?>

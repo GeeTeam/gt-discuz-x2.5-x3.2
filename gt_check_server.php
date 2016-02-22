@@ -13,7 +13,7 @@ $GtSdk = new geetestLib();
 session_start();
 $_SESSION['gtsdk'] = $GtSdk;
 $return = $GtSdk->register($config['keyset']['captchaid']);
-if ($return) {
+if (strlen($return) == 32) {
     $_SESSION['gtserver'] = 1;
     if ($config['keyset']['is_md5'] == 1) {
 	$result = array(
