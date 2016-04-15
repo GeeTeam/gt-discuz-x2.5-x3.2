@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.3.0]]></item>
+			<item id="version"><![CDATA[7.3.1]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -286,7 +286,7 @@
 			<item id="scriptlang">
 				<item id="remind_1"><![CDATA[在第一次安裝時，極驗會分配一個公用的id和key 。]]></item>
 				<item id="remind_2"><![CDATA[如果您需要更多個性化設置，您可以前往<a href="http://account.geetest.com">account.geetest.com</a>註冊生成自己的ID和KEY，在此處替換。如果您已經有極驗賬號，也可以通過將ID和key與極驗賬號綁定來完成高級設置。]]></item>
-				<item id="remind_3"><![CDATA[若有疑問，請聯繫極驗客服QQ:2314321393    極驗用戶QQ群：162669835]]></item>
+				<item id="remind_3"><![CDATA[若有疑問，請聯繫極驗客服QQ:800094077    極驗用戶QQ群：162669835]]></item>
 				<item id="remind_4"><![CDATA[在第一次安裝時，極驗會分配一個公用的移動端的ID和KEY，只會在您打開手機版論壇時有效果。]]></item>
 				<item id="remind_5"><![CDATA[註：上方為手機版專用ID和KEY，若您沒有開啟則不需要修改。]]></item>
 				<item id="open_seccode_safety"><![CDATA[開啟驗證安全2.0]]></item>
@@ -309,8 +309,7 @@
 				<item id="website"><![CDATA[官方網站]]></item>
 				<item id="contact"><![CDATA[聯繫郵箱]]></item>
 				<item id="QQqun"><![CDATA[討論群]]></item>
-				<item id="about_link_product"><![CDATA[產品建議及BUG提交QQ：1851376548（Bill）]]></item>
-				<item id="about_link_commerce"><![CDATA[商務合作QQ：434711855（Tony）]]></item>
+				<item id="about_link_product"><![CDATA[產品建議及BUG提交QQ：800094077]]></item>
 				<item id="relevance_cloud"><![CDATA[關聯到極驗雲]]></item>
 				<item id="geetest_id"><![CDATA[公鑰]]></item>
 				<item id="geetest_key"><![CDATA[私鑰]]></item>

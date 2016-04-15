@@ -148,12 +148,12 @@ JS;
 
         function js_fix_post_middle() {
             var postsubmit = document.getElementById('postsubmit');
+            var gt_tx = document.getElementById("gt_tx");
             gt_tx.style.color = "red";
             postsubmit.disabled = true;
             var geetest_passed = false;
             window.gt_custom_ajax = function(result) {
                 geetest_passed = result;
-                var gt_tx = document.getElementById("gt_tx");
                 if(geetest_passed == true){
                     postsubmit.disabled = false;
                     gt_tx.style.color = "black";                    
