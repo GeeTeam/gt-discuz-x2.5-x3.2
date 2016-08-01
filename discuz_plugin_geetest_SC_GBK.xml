@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[geetest/]]></item>
 			<item id="copyright"><![CDATA[geetest Inc.]]></item>
-			<item id="version"><![CDATA[7.3.1]]></item>
+			<item id="version"><![CDATA[7.3.2]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[geetest]]></item>
@@ -324,6 +324,7 @@
 				<item id="commission_withdrawal"><![CDATA[佣金提现]]></item>
 				<item id="acquisition"><![CDATA[已获得]]></item>
 				<item id="acquisition_note"><![CDATA[暂不支持提现]]></item>
+				<item id="questionnaire"><![CDATA[调研问卷]]></item>
            			</item>
             			<item id="templatelang">
 				<item id="move_to_captcha"><![CDATA[滑动验证]]></item>

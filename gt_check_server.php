@@ -10,8 +10,7 @@ require_once dirname(__FILE__) . '/lib/geetestlib.php';
 $config = include dirname(__FILE__) . '/lib/config.php';
 $keyset = $config['keyset'];
 $GtSdk = new geetestLib();
-session_start();
-$_SESSION['gtsdk'] = $GtSdk;
+
 $return = $GtSdk->register($config['keyset']['captchaid']);
 if (strlen($return) == 32) {
     $_SESSION['gtserver'] = 1;

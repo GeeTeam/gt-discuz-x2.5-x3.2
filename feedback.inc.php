@@ -10,6 +10,7 @@ include_once DISCUZ_ROOT . "/source/plugin/geetest/lib/geetestlib.php";
 //语言包
 $assist = plang('assist');
 $website = plang('website');
+$questionnaire = plang('questionnaire');
 $tutorial_label = plang('tutorial_label');
 $contact = plang('contact');
 $QQqun = plang('QQqun');
@@ -23,6 +24,10 @@ $warn = <<<HTML
     <table class="tb tb2 ">
         <tbody>
         <tr><th colspan="15" class="partition">$assist</th></tr>
+            <tr>
+                <td>$questionnaire <a href="https://jinshuju.net/f/2D2gB6" target="_Blank">https://jinshuju.net/f/2D2gB6</a>
+                </td>   
+            </tr>
             <tr>
                 <td>$tutorial_label <a href="http://www.geetest.com/install/sections/idx-plugins.html#discuz" target="_Blank">http://www.geetest.com/install/sections/idx-plugins.html#discuz</a>
                 </td>   
